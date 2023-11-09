@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 9211061413413669855}
   - component: {fileID: 6354777830085410581}
   - component: {fileID: 8338212555980407585}
+  - component: {fileID: 612297917670196469}
   m_Layer: 0
   m_Name: Staff
-  m_TagString: Untagged
+  m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4841449538468912832}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -62,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6d1c76fa0cc9ca94ea74e2f9026e8c7c, type: 2}
+  - {fileID: -7791486788655378091, guid: 5be3553761466b34eb87f47f2a40cf34, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,3 +97,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83b78629a5b0c3b42bc641517b961437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 3d1ba35bebaa9d748b00a666ff157869, type: 2}
+--- !u!65 &612297917670196469
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4841449538468912832}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5178995, y: 3.4999998, z: 0.17500001}
+  m_Center: {x: 0, y: 0.7499999, z: 0}
