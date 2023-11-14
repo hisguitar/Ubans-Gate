@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Equipment : ItemObject
 {
-    public float attackBonus;
-    public float defenceBonus;
-
     public void Awake()
     {
-        itemType = ItemType.Equipment;
+        type = ItemType.Equipment;
     }
 }

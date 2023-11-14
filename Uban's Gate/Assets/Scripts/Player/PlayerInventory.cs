@@ -3,14 +3,14 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     /// Inventory and Items variable
-    [SerializeField] private InventoryObject playerInventory;
+    [SerializeField] private InventoryObject inventory;
 
     public void OnTriggerEnter(Collider other)
     {
-        var item = other.GetComponent<Item>();
+        var item = other.GetComponent<GroundItem>();
         if (item)
         {
-            playerInventory.AddItem(item.item, 1);
+            inventory.AddItem(new Item(item.item), 1);
             Destroy(other.gameObject);
         }
     }
@@ -19,16 +19,16 @@ public class PlayerInventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            playerInventory.Save();
+            inventory.Save();
         }
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            playerInventory.Load();
+            inventory.Load();
         }
     }
 
     private void OnApplicationQuit()
     {
-        playerInventory.Container.Clear();
+        inventory.Container.Items.Clear();
     }
 }

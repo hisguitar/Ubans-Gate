@@ -7,7 +7,9 @@ public class PlayerData : MonoBehaviour
     [SerializeField] private UnityEvent updateUI;
 
     /// PlayerData variables can't viewed by another class, must be changed from within or using Method only.
-    [SerializeField] private float hp = 10, maxHp = 10;
+    [Header("HP")]
+    [SerializeField] private float hp = 100;
+    [SerializeField] private float maxHp = 100;
     public float Hp
     {
         get => hp;
@@ -18,60 +20,74 @@ public class PlayerData : MonoBehaviour
         get => maxHp;
         set => maxHp = value;
     }
-    [SerializeField] private bool isBattle = false;
-    public bool IsBattle
-    {
-        get => isBattle;
-        set => isBattle = value;
+    [Header("MP")]
+    [SerializeField] private float mp = 100;
+    [SerializeField] private float maxMp = 100;
+    public float Mp {
+        get => mp;
+        set => mp = value;
     }
-    [SerializeField] private int activityPoint = 3;
-    public int ActivityPoint
-    {
-        get => activityPoint;
-        set => activityPoint = value;
+    public float MaxMp {
+        get => maxMp;
+        set => maxMp = value;
     }
 
+    /// Start Method
     private void Start()
     {
         hp = maxHp;
+        mp = maxMp;
     }
     /// Function method must be public because I have to call it from another class.
-    public void Damage(float damage)
+    public void Damage(float amount)
     {
         if(hp > 0)
         {
-            hp -= damage;
+            hp -= amount;
 
             // Call UpdateUI() from UIManager
             updateUI.Invoke();
         }
+        else
+        {
+            Debug.Log("Die");
+        }
     }
 
-    public void Heal(float healing)
+    public void Heal(float amount)
     {
         if(hp < maxHp)
         {
-            hp += healing;
+            hp += amount;
 
             // Call UpdateUI() from UIManager
             updateUI.Invoke();
         }
     }
 
-    public void SwitchIsBattle()
+    public void DecreaseMp(float amount)
     {
-        isBattle = !isBattle;
+        if (mp > 0 && mp >= amount)
+        {
+            mp -= amount;
+
+            // Call UpdateUI() from UIManager
+            updateUI.Invoke();
+        }
+        else
+        {
+            Debug.Log("Not enough MP");
+        }
     }
 
-    public void SetActivityPoint(int delta)
+    public void IncreaseMp(float amount)
     {
-        activityPoint += delta;
-        if (activityPoint < 0)
+        if (mp < maxMp)
         {
-            activityPoint = 0;
-        }
+            mp += amount;
 
-        // Call UpdateUI() from UIManager
-        updateUI.Invoke();
+            // Call UpdateUI() from UIManager
+            updateUI.Invoke();
+        }
     }
 }

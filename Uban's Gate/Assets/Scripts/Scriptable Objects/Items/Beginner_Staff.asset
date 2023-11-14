@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22988ce9add75ee4b801a09732f59a22, type: 3}
   m_Name: Beginner_Staff
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 5306699133411351482, guid: 3597954f0163d4747bdb831ba966dcee, type: 3}
-  itemType: 2
+  Id: 0
+  uiDisplay: {fileID: 3286163911610860551, guid: 8557aa296f928ed408c1e7d68c7ba2d9, type: 3}
+  type: 1
   description: Beginner's Staff for Magicians
-  attackBonus: 2
-  defenceBonus: 0
+  buffs:
+  - attribute: 1
+    value: 0
+    min: 10
+    max: 30
+  - attribute: 3
+    value: 0
+    min: 5
+    max: 15
