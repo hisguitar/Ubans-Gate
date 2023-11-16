@@ -5,10 +5,10 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(PlayerData))]
 [RequireComponent(typeof(NavMeshAgent))]
-public class PlayerMovement : MonoBehaviour
+public class PositionalPlayerMovement : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private InputAction mouseClickAction; /// Click(+), Add Binding > Path: (Mouse: Left Button)
+    [SerializeField] private InputAction mouseClickAction; // Click(+), Add Binding > Path: (Mouse: Left Button)
     private Coroutine moveCoroutine;
 
     private void Start()
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Move()
     {
-        /// Main Camera detect where the mouse's pressed.
+        // Main Camera detect where the mouse's pressed.
         Ray movePosition = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(movePosition, out var hitInfo))
@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
             ClickEffect(hitInfo.point + new Vector3(0, 0.1f, 0));
 
-            /// Change this delay time as needed
+            // Change this delay time as needed
             yield return new WaitForSeconds(1.0f);
         }
     }
