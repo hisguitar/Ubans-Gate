@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Particle Data", menuName = "Scriptable Objects/Particle Data", order = 1)]
+[CreateAssetMenu(fileName = "Particle Data", menuName = "Particle Data", order = 1)]
 public class ParticleData : ScriptableObject
 {
     /// <summary>

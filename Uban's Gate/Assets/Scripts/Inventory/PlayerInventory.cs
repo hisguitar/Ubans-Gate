@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    /// Inventory and Items variable
+    // Inventory and Items variable
     [SerializeField] private InventoryObject inventory;
 
     public void OnTriggerEnter(Collider other)

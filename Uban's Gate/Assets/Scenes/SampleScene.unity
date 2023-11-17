@@ -980,7 +980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8f2ccf2bbad2a4c9e23185a32d0462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: c6c547caf219e044981e733fe0325bdf, type: 2}
+  particleData: {fileID: 11400000, guid: c6c547caf219e044981e733fe0325bdf, type: 2}
 --- !u!1 &608304748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,7 +1255,7 @@ PrefabInstance:
     - target: {fileID: 6354777830085410581, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8d530ffe6c4968843806085897955b9d, type: 2}
+      objectReference: {fileID: 4475637085231239326, guid: 0a4ea9ab62db64d4c829837199616ebe, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
 --- !u!1 &705507993
@@ -1516,7 +1516,7 @@ PrefabInstance:
     - target: {fileID: 6354777830085410581, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8d530ffe6c4968843806085897955b9d, type: 2}
+      objectReference: {fileID: 4475637085231239326, guid: 0a4ea9ab62db64d4c829837199616ebe, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
 --- !u!1 &842848578
@@ -1716,7 +1716,7 @@ PrefabInstance:
     - target: {fileID: 6354777830085410581, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8d530ffe6c4968843806085897955b9d, type: 2}
+      objectReference: {fileID: 4475637085231239326, guid: 0a4ea9ab62db64d4c829837199616ebe, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
 --- !u!1 &922459180
@@ -2045,7 +2045,7 @@ GameObject:
   - component: {fileID: 984773501}
   - component: {fileID: 984773500}
   m_Layer: 5
-  m_Name: Damage_Button
+  m_Name: TakeDamage_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2738,8 +2738,8 @@ GameObject:
   - component: {fileID: 1339645998}
   - component: {fileID: 1339645997}
   - component: {fileID: 1339645994}
-  - component: {fileID: 1339646002}
   - component: {fileID: 1339646004}
+  - component: {fileID: 1339646002}
   - component: {fileID: 1339646001}
   - component: {fileID: 1339646003}
   m_Layer: 0
@@ -2774,6 +2774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d229d43ef7675f745893e8ff46364c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 731c4ffd5af8cc4458abff93c5b5a3b7, type: 2}
   updateUI:
     m_PersistentCalls:
       m_Calls:
@@ -2789,10 +2790,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  hp: 100
-  maxHp: 100
-  mp: 100
-  maxMp: 100
 --- !u!136 &1339645998
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2835,8 +2832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a061382eac34024c8fc59ead5e549e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
-  movement: {x: 0, y: 0, z: 0}
+  playerData: {fileID: 1339645997}
 --- !u!143 &1339646002
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2900,6 +2896,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b8dc4fd3-2977-40bb-ae48-94beb96fc1dd
     m_ActionName: Player/Move
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c954738c-c36e-4071-b2b5-2179ea95e1d9
+    m_ActionName: Player/Look
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -3080,6 +3080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d229d43ef7675f745893e8ff46364c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 731c4ffd5af8cc4458abff93c5b5a3b7, type: 2}
   updateUI:
     m_PersistentCalls:
       m_Calls:
@@ -3095,10 +3096,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  hp: 100
-  maxHp: 100
-  mp: 100
-  maxMp: 100
 --- !u!136 &1687430777
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3342,7 +3339,7 @@ PrefabInstance:
     - target: {fileID: 6354777830085410581, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8d530ffe6c4968843806085897955b9d, type: 2}
+      objectReference: {fileID: 4475637085231239326, guid: 0a4ea9ab62db64d4c829837199616ebe, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
 --- !u!1 &1786630496
@@ -3934,7 +3931,7 @@ PrefabInstance:
     - target: {fileID: 6354777830085410581, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8d530ffe6c4968843806085897955b9d, type: 2}
+      objectReference: {fileID: 4475637085231239326, guid: 0a4ea9ab62db64d4c829837199616ebe, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
 --- !u!1 &2144041409
@@ -4133,6 +4130,6 @@ PrefabInstance:
     - target: {fileID: 6354777830085410581, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8d530ffe6c4968843806085897955b9d, type: 2}
+      objectReference: {fileID: 4475637085231239326, guid: 0a4ea9ab62db64d4c829837199616ebe, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}

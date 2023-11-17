@@ -1,0 +1,35 @@
+EventSystem is used to call functions from other classes without linking the script together.
+
+========= Here's an example of usage: =========
+using UnityEngine;
+using UnityEngine.Events;
+
+public class Player : MonoBehaviour
+{
+    public UnityEvent updateUI;
+    public float hp;
+
+    public void Healing(amount)
+    {
+        hp += amount;
+        updateUI.Invoke();
+    }
+}
+================================================
+using UnityEngine;
+using TMPro;
+
+public class UIManager : MonoBehaviour
+{
+    public Player player;
+    public TMP_Text hpText;
+
+    public void UpdateUI()
+    {
+        hpText.text = player.hp;
+    }
+}
+=========== After writing the script ===========
+============== Process in Unity: ===============
+1. In updateUI field, add UIManager GameObject.
+2. Select UIManager script > UpdateUI()

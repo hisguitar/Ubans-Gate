@@ -1,32 +1,36 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(PlayerInput))]
-public class DirectionalPlayerMovement : MonoBehaviour
+[RequireComponent(typeof(CharacterController))]
+public class PlayerMovementDirectional : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 15f; // Adjust the player's movement speed as needed
+    [SerializeField] private PlayerData playerData;
 
-    private CharacterController characterController;
     private PlayerInput playerInput;
     private InputActionMap actionMap;
-
-    public Vector3 movement;
+    private CharacterController characterController;
+    private Vector3 movement;
 
     private void Awake()
     {
+        // Get the PlayerData component attached to the player GameObject
+        playerData = GetComponent<PlayerData>();
+
         // Get the CharacterController component attached to the player GameObject
         characterController = GetComponent<CharacterController>();
 
         // Get the PlayerInput component attached to the player GameObject
         playerInput = GetComponent<PlayerInput>();
 
-        // Get the ("Player") Action Maps from the InputActions component script that attached with PlayerInput
+        // Get the ("Player") Action Maps from the InputActions(ScripableObject) to the PlayerInput component
         actionMap = playerInput.actions.FindActionMap("Player");
     }
 
+    /// <summary>
     /// OnEnable and OnDisable are used to reduce script execution.
     /// OnEnable will be started before "Start()", so you need to use "Awake()" instead of "Start()" function */
+    /// </summary>
     private void OnEnable()
     {
         actionMap.Enable();
@@ -52,7 +56,7 @@ public class DirectionalPlayerMovement : MonoBehaviour
         }
 
         // Calculate the final movement vector
-        movement = movementDirection * moveSpeed * Time.deltaTime;
+        movement = movementDirection * playerData.playerStats.moveSpeed * Time.deltaTime;
 
         // Apply the movement to the player using CharacterController
         characterController.Move(movement);

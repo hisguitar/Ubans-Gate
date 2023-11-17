@@ -1,0 +1,12 @@
+Here are some benefits:
+1. Handling Data Unrelated to Instances: Data that is unrelated to changes in instances or GameObjects, such as constant data, item lists, or other information, can be stored in ScriptableObjects. This helps reduce data redundancy and facilitates comprehensive data management.
+
+2. Sharing Data Between Scenes: ScriptableObjects can be created and shared between scenes, allowing you to use the same data across multiple scenes without having to instantiate it again.
+
+3. Creating Blueprints or Templates: Using ScriptableObjects to create blueprints or templates can aid in generating reusable action plans or formats, such as characters, monsters, or others.
+
+4. Flexibility for Customization: Using ScriptableObjects makes it easier to customize and modify data without altering the main game script or code.
+
+5. Convenience in Editing Data: You can edit data in ScriptableObjects without having to open or edit the main scripts, making data management more convenient.
+
+Using ScriptableObjects helps in structuring data systems and managing information in Unity, serving as an efficient tool for game development in situations where you need to store and use data with minimal changes or not directly tied to instances of different GameObjects

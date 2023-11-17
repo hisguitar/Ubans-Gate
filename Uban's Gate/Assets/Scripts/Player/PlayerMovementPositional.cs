@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(PlayerData))]
 [RequireComponent(typeof(NavMeshAgent))]
-public class PositionalPlayerMovement : MonoBehaviour
+public class PlayerMovementPositional : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private InputAction mouseClickAction; // Click(+), Add Binding > Path: (Mouse: Left Button)
@@ -60,7 +60,7 @@ public class PositionalPlayerMovement : MonoBehaviour
     private void ClickEffect(Vector3 pointPosition)
     {
         // Particle click effect
-        GameObject clickEffect = ParticleManager.Instance.data.clickEffectPrefab;
+        GameObject clickEffect = ParticleManager.Instance.particleData.clickEffectPrefab;
         Instantiate(clickEffect, pointPosition + new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
 
         // Set destination (NavMesh AI)
