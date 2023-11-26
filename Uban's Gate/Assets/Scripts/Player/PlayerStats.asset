@@ -16,3 +16,5 @@ MonoBehaviour:
   maxHp: 100
   mp: 100
   maxMp: 100
+  moveSpeed: 10
+  jumpSpeed: 10

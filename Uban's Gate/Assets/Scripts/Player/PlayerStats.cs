@@ -14,6 +14,4 @@ public class PlayerStats : ScriptableObject
     public float maxMp = 100;
 
     public float moveSpeed = 15;
-
-    public float jumpSpeed = 15;
 }

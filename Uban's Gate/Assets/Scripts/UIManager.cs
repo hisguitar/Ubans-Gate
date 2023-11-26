@@ -16,26 +16,26 @@ public class UIManager : MonoBehaviour
 
     private float lerpSpeed;
 
-    private void Start()
-    {
-        UpdateUI();
-    }
     private void Update()
     {
         lerpSpeed = 3f * Time.deltaTime;
-        BarFiller();
+        UITextUpdate();
+        UIBarFiller();
     }
 
     // Method must be public because I have to call it from inspector.
-    public void UpdateUI()
+    public void UITextUpdate()
     {
-        hpText.text = $"{playerData.playerStats.hp}/{playerData.playerStats.maxHp}";
-        mpText.text = $"{playerData.playerStats.mp}/{playerData.playerStats.maxMp}";
+        hpText.text = playerData.playerStats.hp + "/" + playerData.playerStats.maxHp;
+        mpText.text = playerData.playerStats.mp + "/" + playerData.playerStats.maxMp;
     }
 
-    private void BarFiller()
+    private void UIBarFiller()
     {
         hpBar.fillAmount = Mathf.Lerp(hpBar.fillAmount, playerData.playerStats.hp / playerData.playerStats.maxHp, lerpSpeed);
+        hpBar.fillAmount = Mathf.Clamp01(hpBar.fillAmount);
+
         mpBar.fillAmount = Mathf.Lerp(mpBar.fillAmount, playerData.playerStats.mp / playerData.playerStats.maxMp, lerpSpeed);
+        mpBar.fillAmount = Mathf.Clamp01(mpBar.fillAmount);
     }
 }

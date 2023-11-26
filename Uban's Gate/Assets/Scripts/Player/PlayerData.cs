@@ -5,7 +5,7 @@ public class PlayerData : MonoBehaviour
 {
     // Create playerStats by using ScriptableObject "CharacterStats"
     public PlayerStats playerStats;
-    [SerializeField] private UnityEvent updateUI;
+    [SerializeField] private UnityEvent UITextUpdate;
 
     private void Start()
     {
@@ -18,7 +18,7 @@ public class PlayerData : MonoBehaviour
         if (playerStats.hp > 0)
         {
             playerStats.hp -= amount;
-            updateUI.Invoke();
+            UITextUpdate.Invoke();
         }
         else
         {
@@ -31,7 +31,7 @@ public class PlayerData : MonoBehaviour
         if (playerStats.hp < playerStats.maxHp)
         {
             playerStats.hp += amount;
-            updateUI.Invoke();
+            UITextUpdate.Invoke();
         }
     }
 
@@ -40,7 +40,7 @@ public class PlayerData : MonoBehaviour
         if (playerStats.mp > 0 && playerStats.mp >= amount)
         {
             playerStats.mp -= amount;
-            updateUI.Invoke();
+            UITextUpdate.Invoke();
         }
         else
         {
@@ -53,7 +53,7 @@ public class PlayerData : MonoBehaviour
         if (playerStats.mp < playerStats.maxMp)
         {
             playerStats.mp += amount;
-            updateUI.Invoke();
+            UITextUpdate.Invoke();
         }
     }
 }
