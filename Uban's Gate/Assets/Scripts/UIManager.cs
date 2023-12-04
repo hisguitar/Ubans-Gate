@@ -19,7 +19,6 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         lerpSpeed = 3f * Time.deltaTime;
-        UITextUpdate();
         UIBarFiller();
     }
 

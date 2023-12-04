@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Beginner_Staff
   m_EditorClassIdentifier: 
   Id: 0
-  uiDisplay: {fileID: 21300000, guid: 9896016a7dc4abb4497572e403b2cc68, type: 3}
+  uiDisplay: {fileID: 21300000, guid: 406a0b20ce515a845afc7d73a349cd22, type: 3}
   type: 1
   description: Beginner's Staff for Magicians
   buffs:

@@ -15,14 +15,19 @@ public class PlayerData : MonoBehaviour
 
     public void Damage(float amount)
     {
-        if (playerStats.hp > 0)
+        if (playerStats.hp < 1)
         {
-            playerStats.hp -= amount;
-            UITextUpdate.Invoke();
+            Debug.Log("Die");
         }
         else
         {
-            Debug.Log("Die");
+            playerStats.hp -= amount;
+            UITextUpdate.Invoke();
+
+            if (playerStats.hp < 1)
+            {
+                Debug.Log("Die");
+            }
         }
     }
 
@@ -37,14 +42,14 @@ public class PlayerData : MonoBehaviour
 
     public void DecreaseMp(float amount)
     {
-        if (playerStats.mp > 0 && playerStats.mp >= amount)
+        if (playerStats.mp < amount)
         {
-            playerStats.mp -= amount;
-            UITextUpdate.Invoke();
+            Debug.Log("Not enough MP");
         }
         else
         {
-            Debug.Log("Not enough MP");
+            playerStats.mp -= amount;
+            UITextUpdate.Invoke();
         }
     }
 
