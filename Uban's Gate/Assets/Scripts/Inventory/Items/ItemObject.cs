@@ -3,7 +3,10 @@ using UnityEngine;
 public enum ItemType
 {
     Default,
-    Equipment,
+    Weapon,
+    Armor,
+    Helmet,
+    Shoes,
     Food
 }
 
@@ -18,12 +21,11 @@ public enum Attributes
 // Base class to create all items
 public abstract class ItemObject : ScriptableObject
 {
-    public int Id;
     public Sprite uiDisplay;
     public ItemType type;
     [TextArea(15, 20)]
     public string description;
-    public ItemBuff[] buffs;
+    public Item data = new Item();
 
     public Item CreateItem()
     {
@@ -36,18 +38,23 @@ public abstract class ItemObject : ScriptableObject
 public class Item
 {
     public string Name;
-    public int Id;
+    public int Id = -1;
     public ItemBuff[] buffs;
+    public Item()
+    {
+        Name = "";
+        Id = -1;
+    }
     public Item(ItemObject item)
     {
         Name = item.name;
-        Id = item.Id;
-        buffs = new ItemBuff[item.buffs.Length];
+        Id = item.data.Id;
+        buffs = new ItemBuff[item.data.buffs.Length];
         for (int i = 0; i < buffs.Length; i++)
         {
-            buffs[i] = new ItemBuff(item.buffs[i].min, item.buffs[i].max)
+            buffs[i] = new ItemBuff(item.data.buffs[i].min, item.data.buffs[i].max)
             {
-                attribute = item.buffs[i].attribute
+                attribute = item.data.buffs[i].attribute
             };
         }
     }

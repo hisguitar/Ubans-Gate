@@ -644,6 +644,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 349764549}
   m_CullTransparentMesh: 1
+--- !u!1 &387318700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 228216789819358059, guid: 06a4d3f68d844e54f8d0a66e0db148d9, type: 3}
+  m_PrefabInstance: {fileID: 1186305181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &439861273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1139,6 +1144,8 @@ GameObject:
   - component: {fileID: 625536160}
   - component: {fileID: 625536162}
   - component: {fileID: 625536161}
+  - component: {fileID: 625536164}
+  - component: {fileID: 625536163}
   m_Layer: 5
   m_Name: Equipment_Screen
   m_TagString: Untagged
@@ -1208,6 +1215,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625536159}
   m_CullTransparentMesh: 1
+--- !u!114 &625536163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625536159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51206b2b71a56e64ba7668527d3c49a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1339645994}
+  inventory: {fileID: 11400000, guid: 5c4b50f2f4fc98d46b22d798c5b3a029, type: 2}
+  slots:
+  - {fileID: 1112383562}
+  - {fileID: 387318700}
+  - {fileID: 1935141848}
+  - {fileID: 689224980}
+--- !u!114 &625536164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625536159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &636732447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,6 +1391,11 @@ PrefabInstance:
       objectReference: {fileID: 4475637085231239326, guid: 0a4ea9ab62db64d4c829837199616ebe, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
+--- !u!1 &689224980 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 228216789819358059, guid: 06a4d3f68d844e54f8d0a66e0db148d9, type: 3}
+  m_PrefabInstance: {fileID: 511867650}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,6 +2703,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099464700}
   m_CullTransparentMesh: 1
+--- !u!1 &1112383562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 228216789819358059, guid: 06a4d3f68d844e54f8d0a66e0db148d9, type: 3}
+  m_PrefabInstance: {fileID: 1902548685}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1143682387
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,8 +3213,9 @@ GameObject:
   - component: {fileID: 1371830521}
   - component: {fileID: 1371830525}
   - component: {fileID: 1371830524}
-  - component: {fileID: 1371830523}
   - component: {fileID: 1371830522}
+  - component: {fileID: 1371830527}
+  - component: {fileID: 1371830526}
   m_Layer: 5
   m_Name: Inventory_Screen
   m_TagString: Untagged
@@ -3217,20 +3267,6 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &1371830523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1371830520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ddff93f09fc362499f09818d3d5c97b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryPrefab: {fileID: 228216789819358059, guid: 06a4d3f68d844e54f8d0a66e0db148d9, type: 3}
-  inventory: {fileID: 11400000, guid: b999bf1020765614ab877d5fe3fa7ee3, type: 2}
 --- !u!114 &1371830524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3269,6 +3305,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371830520}
   m_CullTransparentMesh: 1
+--- !u!114 &1371830526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371830520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cacfbcbc6eacd5940b067296f8665a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1339645994}
+  inventory: {fileID: 11400000, guid: b999bf1020765614ab877d5fe3fa7ee3, type: 2}
+  slotPrefab: {fileID: 228216789819358059, guid: 06a4d3f68d844e54f8d0a66e0db148d9, type: 3}
+--- !u!114 &1371830527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371830520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &1397049102
 GameObject:
   m_ObjectHideFlags: 0
@@ -3861,6 +3925,11 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 228216789819358058, guid: 06a4d3f68d844e54f8d0a66e0db148d9, type: 3}
   m_PrefabInstance: {fileID: 1902548685}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1935141848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 228216789819358059, guid: 06a4d3f68d844e54f8d0a66e0db148d9, type: 3}
+  m_PrefabInstance: {fileID: 439861273}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1970629333
 GameObject:
