@@ -18,10 +18,13 @@ public enum Attributes
     Strength
 }
 
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory System/Items/item")]
+
 // Base class to create all items
-public abstract class ItemObject : ScriptableObject
+public class ItemObject : ScriptableObject
 {
     public Sprite uiDisplay;
+    public bool stackable;
     public ItemType type;
     [TextArea(15, 20)]
     public string description;

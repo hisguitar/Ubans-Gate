@@ -1227,7 +1227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51206b2b71a56e64ba7668527d3c49a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1339645994}
   inventory: {fileID: 11400000, guid: 5c4b50f2f4fc98d46b22d798c5b3a029, type: 2}
   slots:
   - {fileID: 1112383562}
@@ -1389,6 +1388,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 4475637085231239326, guid: 0a4ea9ab62db64d4c829837199616ebe, type: 3}
+    - target: {fileID: 8338212555980407585, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d1ba35bebaa9d748b00a666ff157869, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
 --- !u!1 &689224980 stripped
@@ -1655,6 +1658,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 4475637085231239326, guid: 0a4ea9ab62db64d4c829837199616ebe, type: 3}
+    - target: {fileID: 8338212555980407585, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d1ba35bebaa9d748b00a666ff157869, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
 --- !u!1 &842848578
@@ -3059,6 +3066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: b999bf1020765614ab877d5fe3fa7ee3, type: 2}
+  equipment: {fileID: 11400000, guid: 5c4b50f2f4fc98d46b22d798c5b3a029, type: 2}
 --- !u!114 &1339645997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3317,7 +3325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cacfbcbc6eacd5940b067296f8665a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1339645994}
   inventory: {fileID: 11400000, guid: b999bf1020765614ab877d5fe3fa7ee3, type: 2}
   slotPrefab: {fileID: 228216789819358059, guid: 06a4d3f68d844e54f8d0a66e0db148d9, type: 3}
 --- !u!114 &1371830527
@@ -4360,5 +4367,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 4475637085231239326, guid: 0a4ea9ab62db64d4c829837199616ebe, type: 3}
+    - target: {fileID: 8338212555980407585, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d1ba35bebaa9d748b00a666ff157869, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8561bb88e3178d04eb0d43ce1626b008, type: 3}

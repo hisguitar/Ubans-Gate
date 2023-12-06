@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
@@ -11,24 +10,45 @@ public class InventoryObject : ScriptableObject
     public ItemDatabaseObject database;
     public Inventory Container;
 
-    public void AddItem(Item _item, int _amount)
+    public bool AddItem(Item _item, int _amount)
     {
-        if (_item.buffs.Length > 0)
+        if (EmptySlotCount <= 0)
+            return false;
+        InventorySlot slot = FindItemOnInventory(_item);
+        if (!database.Items[_item.Id].stackable || slot == null)
         {
             SetEmptySlot(_item, _amount);
-            return;
+            return true;
         }
+        slot.AddAmount(_amount);
+        return true;
+    }
 
+    public int EmptySlotCount {
+        get
+        {
+            int counter = 0;
+            for (int i = 0; i < Container.Items.Length; i++)
+            {
+                if (Container.Items[i].item.Id <= -1)
+                    counter++;
+            }
+            return counter;
+        }
+    }
+
+    public InventorySlot FindItemOnInventory(Item _item)
+    {
         for (int i = 0; i < Container.Items.Length; i++)
         {
             if (Container.Items[i].item.Id == _item.Id)
             {
-                Container.Items[i].AddAmount(_amount);
-                return;
+                return Container.Items[i];
             }
         }
-        SetEmptySlot(_item, _amount);
+        return null;
     }
+
     public InventorySlot SetEmptySlot(Item _item, int _amount)
     {
         for (int i = 0; i < Container.Items.Length; i++)
@@ -119,7 +139,7 @@ public class Inventory
     {
         for (int i = 0;i < Items.Length; i++)
         {
-            Items[i].UpdateSlot(new Item(), 0);
+            Items[i].RemoveItem();
         }
     }
 }
@@ -127,8 +147,8 @@ public class Inventory
 [System.Serializable]
 public class InventorySlot
 {
-    [System.NonSerialized]
     public ItemType[] AllowedItems = new ItemType[0];
+    [System.NonSerialized]
     public UserInterface parent;
     public Item item;
     public int amount;
@@ -138,7 +158,7 @@ public class InventorySlot
         {
             if(item.Id >= 0)
             {
-                return parent.inventory.database.GetItem[item.Id];
+                return parent.inventory.database.Items[item.Id];
             }
             return null;
         }
@@ -146,7 +166,7 @@ public class InventorySlot
 
     public InventorySlot()
     {
-        item = null;
+        item = new Item();
         amount = 0;
     }
 
