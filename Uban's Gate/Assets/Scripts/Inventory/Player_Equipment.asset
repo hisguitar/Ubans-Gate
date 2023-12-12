@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   savePath: /equipment.Save
   database: {fileID: 11400000, guid: 77e462bab31871643850b074fb69fd62, type: 2}
+  type: 1
   Container:
     Slots:
     - AllowedItems: 01000000

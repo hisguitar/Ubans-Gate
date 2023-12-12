@@ -3235,7 +3235,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Armor
+  m_text: Helmet
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3581,6 +3581,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: b999bf1020765614ab877d5fe3fa7ee3, type: 2}
   equipment: {fileID: 11400000, guid: 5c4b50f2f4fc98d46b22d798c5b3a029, type: 2}
+  attributes:
+  - type: 0
+    value: {fileID: 0}
+  - type: 1
+    value: {fileID: 0}
+  - type: 2
+    value: {fileID: 0}
+  - type: 3
+    value: {fileID: 0}
 --- !u!114 &1339645997
 MonoBehaviour:
   m_ObjectHideFlags: 0

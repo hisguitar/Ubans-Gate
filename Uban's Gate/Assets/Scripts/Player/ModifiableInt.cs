@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void ModifiedEvent();
 [System.Serializable]
-public class ModifiableInt : MonoBehaviour
+public class ModifiableInt
 {
     [SerializeField]
     private int baseValue;
@@ -12,7 +11,7 @@ public class ModifiableInt : MonoBehaviour
 
     [SerializeField]
     private int modifiedValue;
-    public int ModifiedValue { get { return modifiedValue; } private set { ModifiedValue = value; } }
+    public int ModifiedValue { get { return modifiedValue; } private set { modifiedValue = value; } }
 
     public List<IModifiers> modifiers = new List<IModifiers>();
 
