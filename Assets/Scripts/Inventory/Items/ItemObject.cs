@@ -64,20 +64,26 @@ public class Item
 }
 
 [System.Serializable]
-public class ItemBuff
+public class ItemBuff : IModifiers
 {
     public Attributes attribute;
     public int value;
-    public int min;
-    public int max;
+    public int min; // buff min value roll
+    public int max; // buff max value roll
     public ItemBuff(int _min, int _max)
     {
         min = _min;
         max = _max;
         GenerateValue();
     }
+
+    void IModifiers.AddValue(ref int baseValue)
+    {
+        baseValue += value;
+    }
+
     public void GenerateValue()
     {
-        value = UnityEngine.Random.Range(min, max);
+        value = Random.Range(min, max);
     }
 }

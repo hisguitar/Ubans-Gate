@@ -19,4 +19,12 @@ MonoBehaviour:
   data:
     Name: Beginner Staff
     Id: 0
-    buffs: []
+    buffs:
+    - attribute: 3
+      value: 0
+      min: 5
+      max: 15
+    - attribute: 3
+      value: 0
+      min: 10
+      max: 20
