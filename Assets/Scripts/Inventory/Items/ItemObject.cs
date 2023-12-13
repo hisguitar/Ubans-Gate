@@ -12,10 +12,10 @@ public enum ItemType
 
 public enum Attributes
 {
+    Strength,
+    Defense,
     Agility,
-    Intellect,
-    Stamina,
-    Strength
+    Intellect
 }
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory System/Items/item")]
