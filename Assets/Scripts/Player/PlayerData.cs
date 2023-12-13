@@ -3,30 +3,37 @@ using UnityEngine.Events;
 
 public class PlayerData : MonoBehaviour
 {
-    public ModifiableInt playerHP;
-    public ModifiableInt playerMP;
-    // Create playerStats by using ScriptableObject "CharacterStats"
-    public PlayerStats playerStats;
     [SerializeField] private UnityEvent UITextUpdate;
+
+    [Header("HP")]
+    public float hp = 100;
+    public float maxHp = 100;
+
+    [Header("MP")]
+    public float mp = 100;
+    public float maxMp = 100;
+
+    [Header("OTHER STATS")]
+    public float moveSpeed = 10;
 
     private void Start()
     {
-        playerStats.hp = playerStats.maxHp;
-        playerStats.mp = playerStats.maxMp;
+        hp = maxHp;
+        mp = maxMp;
     }
 
     public void Damage(float amount)
     {
-        if (playerStats.hp < 1)
+        if (hp < 1)
         {
             Debug.Log("Die");
         }
         else
         {
-            playerStats.hp -= amount;
+            hp -= amount;
             UITextUpdate.Invoke();
 
-            if (playerStats.hp < 1)
+            if (hp < 1)
             {
                 Debug.Log("Die");
             }
@@ -35,31 +42,31 @@ public class PlayerData : MonoBehaviour
 
     public void Heal(float amount)
     {
-        if (playerStats.hp < playerStats.maxHp)
+        if (hp < maxHp)
         {
-            playerStats.hp += amount;
+            hp += amount;
             UITextUpdate.Invoke();
         }
     }
 
     public void DecreaseMp(float amount)
     {
-        if (playerStats.mp < amount)
+        if (mp < amount)
         {
             Debug.Log("Not enough MP");
         }
         else
         {
-            playerStats.mp -= amount;
+            mp -= amount;
             UITextUpdate.Invoke();
         }
     }
 
     public void IncreaseMp(float amount)
     {
-        if (playerStats.mp < playerStats.maxMp)
+        if (mp < maxMp)
         {
-            playerStats.mp += amount;
+            mp += amount;
             UITextUpdate.Invoke();
         }
     }

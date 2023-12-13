@@ -25,16 +25,16 @@ public class UIManager : MonoBehaviour
     // Method must be public because I have to call it from inspector.
     public void UITextUpdate()
     {
-        hpText.text = playerData.playerStats.hp + "/" + playerData.playerStats.maxHp;
-        mpText.text = playerData.playerStats.mp + "/" + playerData.playerStats.maxMp;
+        hpText.text = playerData.hp + "/" + playerData.maxHp;
+        mpText.text = playerData.mp + "/" + playerData.maxMp;
     }
 
     private void UIBarFiller()
     {
-        hpBar.fillAmount = Mathf.Lerp(hpBar.fillAmount, playerData.playerStats.hp / playerData.playerStats.maxHp, lerpSpeed);
+        hpBar.fillAmount = Mathf.Lerp(hpBar.fillAmount, playerData.hp / playerData.maxHp, lerpSpeed);
         hpBar.fillAmount = Mathf.Clamp01(hpBar.fillAmount);
 
-        mpBar.fillAmount = Mathf.Lerp(mpBar.fillAmount, playerData.playerStats.mp / playerData.playerStats.maxMp, lerpSpeed);
+        mpBar.fillAmount = Mathf.Lerp(mpBar.fillAmount, playerData.mp / playerData.maxMp, lerpSpeed);
         mpBar.fillAmount = Mathf.Clamp01(mpBar.fillAmount);
     }
 }
