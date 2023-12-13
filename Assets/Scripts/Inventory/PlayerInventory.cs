@@ -6,6 +6,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private InventoryObject inventory;
     [SerializeField] private InventoryObject equipment;
 
+    // Add number of this attributes in the Inspector to = the number of Attributes of the "ItemObject" class.
     public Attribute[] attributes;
 
     public void Start()
@@ -106,7 +107,7 @@ public class PlayerInventory : MonoBehaviour
     
     public void AttributeModified(Attribute attribute)
     {
-        Debug.Log(string.Concat(attribute.type, "was updated! Value is now ", attribute.value.ModifiedValue));
+        Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
     }
 
     private void OnApplicationQuit()

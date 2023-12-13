@@ -20,7 +20,11 @@ MonoBehaviour:
     Name: Beginner Staff
     Id: 0
     buffs:
-    - attribute: 3
+    - attribute: 0
+      value: 0
+      min: 5
+      max: 10
+    - attribute: 4
       value: 0
       min: 10
       max: 20

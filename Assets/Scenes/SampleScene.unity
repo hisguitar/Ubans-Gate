@@ -3985,6 +3985,18 @@ MonoBehaviour:
     value:
       baseValue: 0
       modifiedValue: 0
+  - type: 4
+    value:
+      baseValue: 0
+      modifiedValue: 0
+  - type: 5
+    value:
+      baseValue: 0
+      modifiedValue: 0
+  - type: 6
+    value:
+      baseValue: 0
+      modifiedValue: 0
 --- !u!114 &1339645997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3997,6 +4009,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d229d43ef7675f745893e8ff46364c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHP:
+    baseValue: 0
+    modifiedValue: 0
+  playerMP:
+    baseValue: 0
+    modifiedValue: 0
   playerStats: {fileID: 11400000, guid: 731c4ffd5af8cc4458abff93c5b5a3b7, type: 2}
   UITextUpdate:
     m_PersistentCalls:

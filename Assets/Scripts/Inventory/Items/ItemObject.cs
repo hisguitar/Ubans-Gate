@@ -12,10 +12,13 @@ public enum ItemType
 
 public enum Attributes
 {
-    Strength,
-    Defense,
-    Agility,
-    Intellect
+    Strength, // Affects "Damage rate of malee attack and alee skill"
+    Defense, // Affects "Rate of resistance to all types of damage"
+    Agility, // Affects "Character's speed" and "Dodge rate"
+    Vitality, // Afftects "HP Value"
+    Intelligence, // Affects "Damage rate of magic skills"
+    Charisma, // Affects "Success rate of negotiations" and "charm skills"
+    Luck // Affects "Item drop rate" and "critical hit chance"
 }
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory System/Items/item")]

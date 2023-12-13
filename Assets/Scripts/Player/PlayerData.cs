@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public class PlayerData : MonoBehaviour
 {
+    public ModifiableInt playerHP;
+    public ModifiableInt playerMP;
     // Create playerStats by using ScriptableObject "CharacterStats"
     public PlayerStats playerStats;
     [SerializeField] private UnityEvent UITextUpdate;
