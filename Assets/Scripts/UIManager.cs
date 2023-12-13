@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
         UIBarFiller();
     }
 
-    // Method must be public because I have to call it from inspector.
+    // Method must be public because I have to call it from inspector, and to create console button.
     public void UITextUpdate()
     {
         hpText.text = playerData.Hp + "/" + playerData.MaxHp;
