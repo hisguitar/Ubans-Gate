@@ -4025,21 +4025,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Lck: 10
-  playerStr: 10
-  playerDef: 10
-  playerAgi: 10
-  playerVit: 10
-  playerInt: 10
-  playerCha: 10
-  playerLck: 10
-  Str: 0
-  Def: 0
-  Agi: 0
-  Vit: 0
-  Int: 0
-  Cha: 0
-  Lck: 0
 --- !u!136 &1339645998
 CapsuleCollider:
   m_ObjectHideFlags: 0
