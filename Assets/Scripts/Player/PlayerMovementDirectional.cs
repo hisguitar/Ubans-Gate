@@ -56,7 +56,7 @@ public class PlayerMovementDirectional : MonoBehaviour
         }
 
         // Calculate the final movement vector
-        movement = movementDirection * playerData.Agi * Time.deltaTime;
+        movement = movementDirection * (playerData.PlayerAgi + playerData.Agi) * Time.deltaTime;
 
         // Apply the movement to the player using CharacterController
         characterController.Move(movement);

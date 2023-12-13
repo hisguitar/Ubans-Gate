@@ -46,6 +46,9 @@ public class PlayerInventory : MonoBehaviour
                     }
                 }
 
+                // Update playerData when removed item from equipment slot
+                OnRemoveItemUpdate();
+
                 break;
             case InterfaceType.Chest:
                 break;
@@ -113,6 +116,7 @@ public class PlayerInventory : MonoBehaviour
     {
         Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
 
+        // Send attribute value to playerData
         if (attribute.type == Attributes.Vitality)
         {
             playerData.UpdateVitality(attribute.value.ModifiedValue);
@@ -120,6 +124,19 @@ public class PlayerInventory : MonoBehaviour
         if (attribute.type == Attributes.Intelligence)
         {
             playerData.UpdateIntelligence(attribute.value.ModifiedValue);
+        }
+    }
+
+    // Update player stats to no greater than the maximum value.
+    public void OnRemoveItemUpdate()
+    {
+        if (playerData.Hp > playerData.MaxHp)
+        {
+            playerData.Heal(0);
+        }
+        if (playerData.Mp > playerData.MaxMp)
+        {
+            playerData.IncreaseMp(0);
         }
     }
 

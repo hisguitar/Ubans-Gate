@@ -5,103 +5,103 @@ public class PlayerData : MonoBehaviour
 {
     [SerializeField] private UnityEvent UITextUpdate;
 
-    [Header("ATTRIBUTES")]
-    public int Str = 10;
-    public int Def = 10;
-    public int Agi = 10;
-    public int Vit = 10;
-    public int Int = 10;
-    public int Cha = 10;
-    public int Lck = 10;
+    // ATTRIBUTES FROM PLAYER
+    public int PlayerStr { get; private set; } = 10;
+    public int PlayerDef { get; private set; } = 10;
+    public int PlayerAgi { get; private set; } = 10;
+    public int PlayerVit { get; private set; } = 10;
+    public int PlayerInt { get; private set; } = 10;
+    public int PlayerCha { get; private set; } = 10;
+    public int PlayerLck { get; private set; } = 10;
 
-    [Header("UI STATS")]
-    public float hp;
-    public float maxHp;
-    public float mp;
-    public float maxMp;
+    // ATTRIBUTES FROM EQUIPMENT
+    public int Str { get; private set; }
+    public int Def { get; private set; }
+    public int Agi { get; private set; }
+    public int Vit { get; private set; }
+    public int Int { get; private set; }
+    public int Cha { get; private set; }
+    public int Lck { get; private set; }
+
+    // STATS DISPLAYED ON UI
+    public float Hp { get; private set; }
+    public float MaxHp => (PlayerVit + Vit) * 10;
+    public float Mp { get; private set; }
+    public float MaxMp => (PlayerInt + Int) * 10;
 
     private void Start()
     {
-        // Default attributes to stats
-        maxHp = Vit * 10;
-        maxMp = Int * 10;
-
         // Default stats
-        hp = maxHp;
-        mp = maxMp;
+        Hp = MaxHp;
+        Mp = MaxMp;
 
         // Update UI when Start()
         UITextUpdate.Invoke();
     }
 
     #region Upgrade-stats
-    // Vitality afftects "HP Value"
+    // Vitality(Vit) afftects "HP Value"
     public void UpdateVitality(int vitality)
     {
-        Vit += vitality;
-
-        Debug.Log("Update MaxHp");
-        maxHp += (vitality * 10);
+        Vit = vitality;
         UITextUpdate.Invoke();
     }
-    // Intelligence affects "Damage rate of magic skills" and "MP"
+
+    // Intelligence(Int) affects "Damage rate of magic skills" and "MP"
     public void UpdateIntelligence(int intelligence)
     {
-        Int += intelligence;
-
-        Debug.Log("Update MaxMp");
-        maxMp += (intelligence * 10);
+        Int = intelligence;
         UITextUpdate.Invoke();
     }
     #endregion
     #region In-combat
     public void TakeDamage(float amount)
     {
-        if (hp < 1)
+        Hp -= amount;
+        if (Hp < 1)
         {
             Debug.Log("Die");
         }
-        else
-        {
-            hp -= amount;
-            UITextUpdate.Invoke();
-
-            if (hp < 1)
-            {
-                Debug.Log("Die");
-            }
-        }
+        UITextUpdate.Invoke();
     }
 
     public void Heal(float amount)
     {
-        if (hp < maxHp)
+        if (Hp < MaxHp)
         {
-            hp += amount;
-            UITextUpdate.Invoke();
+            Hp += amount;
         }
+        else
+        {
+            Hp = MaxHp;
+        }
+        UITextUpdate.Invoke();
     }
 
     public void DecreaseMp(float amount)
     {
-        if (mp < amount)
+        if (Mp < amount)
         {
             Debug.Log("Not enough MP");
         }
         else
         {
-            mp -= amount;
-            UITextUpdate.Invoke();
+            Mp -= amount;
         }
+        UITextUpdate.Invoke();
     }
 
     public void IncreaseMp(float amount)
     {
-        if (mp < maxMp)
+        if (Mp < MaxMp)
         {
-            mp += amount;
-            UITextUpdate.Invoke();
+            Mp += amount;
         }
+        else
+        {
+            Mp = MaxMp;
+        }
+        UITextUpdate.Invoke();
     }
     #endregion
 }
