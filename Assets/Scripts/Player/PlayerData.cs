@@ -5,24 +5,57 @@ public class PlayerData : MonoBehaviour
 {
     [SerializeField] private UnityEvent UITextUpdate;
 
-    [Header("HP")]
-    public float hp = 100;
-    public float maxHp = 100;
+    [Header("ATTRIBUTES")]
+    public int Str = 10;
+    public int Def = 10;
+    public int Agi = 10;
+    public int Vit = 10;
+    public int Int = 10;
+    public int Cha = 10;
+    public int Lck = 10;
 
-    [Header("MP")]
-    public float mp = 100;
-    public float maxMp = 100;
-
-    [Header("OTHER STATS")]
-    public float moveSpeed = 10;
+    [Header("UI STATS")]
+    public float hp;
+    public float maxHp;
+    public float mp;
+    public float maxMp;
 
     private void Start()
     {
+        // Default attributes to stats
+        maxHp = Vit * 10;
+        maxMp = Int * 10;
+
+        // Default stats
         hp = maxHp;
         mp = maxMp;
+
+        // Update UI when Start()
+        UITextUpdate.Invoke();
     }
 
-    public void Damage(float amount)
+    #region Upgrade-stats
+    // Vitality afftects "HP Value"
+    public void UpdateVitality(int vitality)
+    {
+        Vit += vitality;
+
+        Debug.Log("Update MaxHp");
+        maxHp += (vitality * 10);
+        UITextUpdate.Invoke();
+    }
+    // Intelligence affects "Damage rate of magic skills" and "MP"
+    public void UpdateIntelligence(int intelligence)
+    {
+        Int += intelligence;
+
+        Debug.Log("Update MaxMp");
+        maxMp += (intelligence * 10);
+        UITextUpdate.Invoke();
+    }
+    #endregion
+    #region In-combat
+    public void TakeDamage(float amount)
     {
         if (hp < 1)
         {
@@ -70,4 +103,5 @@ public class PlayerData : MonoBehaviour
             UITextUpdate.Invoke();
         }
     }
+    #endregion
 }

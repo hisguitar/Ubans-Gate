@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+    [SerializeField] private PlayerData playerData;
+
     // Inventory and Items variable
     [SerializeField] private InventoryObject inventory;
     [SerializeField] private InventoryObject equipment;
@@ -11,6 +13,8 @@ public class PlayerInventory : MonoBehaviour
 
     public void Start()
     {
+        playerData = GetComponent<PlayerData>();
+
         for (int i = 0; i < attributes.Length; i++)
         {
             attributes[i].SetParent(this);
@@ -108,6 +112,15 @@ public class PlayerInventory : MonoBehaviour
     public void AttributeModified(Attribute attribute)
     {
         Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
+
+        if (attribute.type == Attributes.Vitality)
+        {
+            playerData.UpdateVitality(attribute.value.ModifiedValue);
+        }
+        if (attribute.type == Attributes.Intelligence)
+        {
+            playerData.UpdateIntelligence(attribute.value.ModifiedValue);
+        }
     }
 
     private void OnApplicationQuit()

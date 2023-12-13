@@ -16,7 +16,7 @@ public enum Attributes
     Defense, // Affects "Rate of resistance to all types of damage"
     Agility, // Affects "Character's speed" and "Dodge rate"
     Vitality, // Afftects "HP Value"
-    Intelligence, // Affects "Damage rate of magic skills"
+    Intelligence, // Affects "Damage rate of magic skills" and "MP"
     Charisma, // Affects "Success rate of negotiations" and "charm skills"
     Luck // Affects "Item drop rate" and "critical hit chance"
 }

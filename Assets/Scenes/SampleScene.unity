@@ -678,7 +678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &270616134
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2955,7 +2955,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1339645997}
         m_TargetAssemblyTypeName: PlayerData, Assembly-CSharp
-        m_MethodName: Damage
+        m_MethodName: TakeDamage
         m_Mode: 4
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3966,6 +3966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04afa1d145fd6664ea49d6d11327f871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 0}
   inventory: {fileID: 11400000, guid: b999bf1020765614ab877d5fe3fa7ee3, type: 2}
   equipment: {fileID: 11400000, guid: 5c4b50f2f4fc98d46b22d798c5b3a029, type: 2}
   attributes:
@@ -4009,13 +4010,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d229d43ef7675f745893e8ff46364c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHP:
-    baseValue: 0
-    modifiedValue: 0
-  playerMP:
-    baseValue: 0
-    modifiedValue: 0
-  playerStats: {fileID: 11400000, guid: 731c4ffd5af8cc4458abff93c5b5a3b7, type: 2}
   UITextUpdate:
     m_PersistentCalls:
       m_Calls:
@@ -4031,6 +4025,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Str: 10
+  Def: 10
+  Agi: 10
+  Vit: 10
+  Int: 10
+  Cha: 10
+  Lck: 10
+  hp: 100
+  maxHp: 100
+  mp: 100
+  maxMp: 100
 --- !u!136 &1339645998
 CapsuleCollider:
   m_ObjectHideFlags: 0
