@@ -116,14 +116,42 @@ public class PlayerInventory : MonoBehaviour
     {
         Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
 
-        // Send attribute value to playerData
+        // Call Updrade-stats method of playerData to update attributes value
+        /* These functions cannot be combined into a single state because of the different values. must work separately */
+        // Str
+        if (attribute.type == Attributes.Strength)
+        {
+            playerData.UpdateStrength(attribute.value.ModifiedValue);
+        }
+        // Def
+        if (attribute.type == Attributes.Defense)
+        {
+            playerData.UpdateDefense(attribute.value.ModifiedValue);
+        }
+        // Agi
+        if (attribute.type == Attributes.Agility)
+        {
+            playerData.UpdateAgility(attribute.value.ModifiedValue);
+        }
+        // Vit
         if (attribute.type == Attributes.Vitality)
         {
             playerData.UpdateVitality(attribute.value.ModifiedValue);
         }
+        // Int
         if (attribute.type == Attributes.Intelligence)
         {
             playerData.UpdateIntelligence(attribute.value.ModifiedValue);
+        }
+        // Cha
+        if (attribute.type == Attributes.Charisma)
+        {
+            playerData.UpdateCharisma(attribute.value.ModifiedValue);
+        }
+        // Lck
+        if (attribute.type == Attributes.Luck)
+        {
+            playerData.UpdateLuck(attribute.value.ModifiedValue);
         }
     }
 

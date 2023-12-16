@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,11 +7,12 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData;
 
-    [Header("HP")]
+    [Header("STATS FROM PLAYER + EQUIPMENT")]
+    [SerializeField] private TMP_Text statsText;
+
+    [Header("HP AND MP")]
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private Image hpBar;
-
-    [Header("MP")]
     [SerializeField] private TMP_Text mpText;
     [SerializeField] private Image mpBar;
 
@@ -25,8 +27,20 @@ public class UIManager : MonoBehaviour
     // Method must be public because I have to call it from inspector, and to create console button.
     public void UITextUpdate()
     {
-        hpText.text = playerData.Hp + "/" + playerData.MaxHp;
-        mpText.text = playerData.Mp + "/" + playerData.MaxMp;
+        // ATTRIBUTES FROM PLAYER + EQUIPMENT
+        statsText.text =
+            $"Str : <color=white>{playerData.PlayerStr}</color>{((playerData.Str.ToString() == "0") ? "" : $" <color=green>+ {playerData.Str}</color>")}{Environment.NewLine}" +
+            $"Def : <color=white>{playerData.PlayerDef}</color>{((playerData.Def.ToString() == "0") ? "" : $" <color=green>+ {playerData.Def}</color>")}{Environment.NewLine}" +
+            $"Agi : <color=white>{playerData.PlayerAgi}</color>{((playerData.Agi.ToString() == "0") ? "" : $" <color=green>+ {playerData.Agi}</color>")}{Environment.NewLine}" +
+            $"Vit : <color=white>{playerData.PlayerVit}</color>{((playerData.Vit.ToString() == "0") ? "" : $" <color=green>+ {playerData.Vit}</color>")}{Environment.NewLine}" +
+            $"Int : <color=white>{playerData.PlayerInt}</color>{((playerData.Int.ToString() == "0") ? "" : $" <color=green>+ {playerData.Int}</color>")}{Environment.NewLine}" +
+            $"Cha : <color=white>{playerData.PlayerCha}</color>{((playerData.Cha.ToString() == "0") ? "" : $" <color=green>+ {playerData.Cha}</color>")}{Environment.NewLine}" +
+            $"Lck : <color=white>{playerData.PlayerLck}</color>{((playerData.Lck.ToString() == "0") ? "" : $" <color=green>+ {playerData.Lck}</color>")}{Environment.NewLine}" +
+            $"Exp : <color=yellow>{playerData.Exp}/{playerData.ExpToLevelUp}</color>";
+
+        // STATS DISPLAYED ON UI
+        hpText.text = $"{playerData.Hp:F0} / {playerData.MaxHp:F0}";
+        mpText.text = $"{playerData.Mp:F0} / {playerData.MaxMp:F0}";
     }
 
     private void UIBarFiller()

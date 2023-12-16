@@ -38,11 +38,6 @@ public abstract class UserInterface : MonoBehaviour
         }
     }
 
-    //private void Update()
-    //{
-    //    slotsOnInterface.UpdateSlotDisplay();
-    //}
-
     public abstract void CreateSlots();
 
     protected void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action)
