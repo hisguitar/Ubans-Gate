@@ -95,9 +95,14 @@ public class PlayerData : MonoBehaviour
     {
         Exp += amount;
 
+        // Level Up!
         while (Exp >= ExpToLevelUp)
         {
-            LevelUp();
+            // Why use while and not if: The use of while is intended to make it possible to level up multiple levels in a single move if the player has enough Exp to skip multiple levels. Use while to check conditions. And so on until it is false.
+            Level++;
+            Exp -= ExpToLevelUp;
+            ExpToLevelUp = CalculateExpToLevelUp();
+            // Do other things when LevelUp
         }
     }
 
@@ -106,33 +111,47 @@ public class PlayerData : MonoBehaviour
         return 100 * Level;
     }
 
-    private void LevelUp()
-    {
-        // Why use while and not if: The use of while is intended to make it possible to level up multiple levels in a single move if the player has enough Exp to skip multiple levels. Use while to check conditions. And so on until it is false.
-        Level++;
-        Exp -= ExpToLevelUp;
-        ExpToLevelUp = CalculateExpToLevelUp();
-        // Do other things when LevelUp
-    }
-
     public void TakeDamage(float amount)
     {
-        int averageDef = (PlayerDef + Def) / 2;
-        Hp -= amount - averageDef;
+        // Calculate damage rate
+        float totalDamage = amount;
+        float damageRate = totalDamage / 200;
+
+        /// With a maximum level of 90
+        /// In case of player spends all points on "Def", The maximum of "PlayerDef" is 10 + 178 = 188 (Doesn't include stats from equipment.)
+        /// totalDef 200 = 100% (2 points of Def : 1% of defPercent)
+
+        // Calculates Def percentage
+        int totalDef = (PlayerDef + Def);
+        float defPercentage = totalDef * damageRate;
+
+        // if percentage >= damage 99% of totalDamage, set totalDamage = 1%
+        if (defPercentage >= 0.99f * totalDamage)
+        {
+            totalDamage = 0.01f * totalDamage;
+        }
+        else
+        {
+            totalDamage -= defPercentage;
+        }
+
+        // Take Damage
+        Hp -= totalDamage;
+
+        // Check if player die
         if (Hp < 1)
         {
             Debug.Log("Die");
             Hp = 0;
         }
+
+        // Update UI
         UITextUpdate.Invoke();
     }
 
     public void Heal(float amount)
     {
-        if (Hp < MaxHp)
-        {
-            Hp += amount + (PlayerInt + Int);
-        }
+        Hp += amount + (PlayerInt + Int);
         if (Hp > MaxHp)
         {
             Hp = MaxHp;
