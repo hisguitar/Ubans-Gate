@@ -39,8 +39,8 @@ public class UIManager : MonoBehaviour
             $"Exp : <color=yellow>{playerData.Exp}/{playerData.ExpToLevelUp}</color>";
 
         // STATS DISPLAYED ON UI
-        hpText.text = $"{playerData.Hp:F0} / {playerData.MaxHp:F0}";
-        mpText.text = $"{playerData.Mp:F0} / {playerData.MaxMp:F0}";
+        hpText.text = $"{playerData.Hp:F0}/{playerData.MaxHp:F0}";
+        mpText.text = $"{playerData.Mp:F0}/{playerData.MaxMp:F0}";
     }
 
     private void UIBarFiller()
