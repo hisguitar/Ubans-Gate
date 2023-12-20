@@ -6,6 +6,7 @@ public enum ItemType
     Weapon,
     Armor,
     Helmet,
+    Amulet, 
     Shoes,
     Food
 }

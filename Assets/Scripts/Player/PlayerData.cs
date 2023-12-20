@@ -6,11 +6,11 @@ public class PlayerData : MonoBehaviour
     [SerializeField] private UnityEvent UITextUpdate;
 
     // STATS FROM PLAYER
-    public int PlayerStr { get; private set; } = 10;
-    public int PlayerDef { get; private set; } = 10;
-    public int PlayerAgi { get; private set; } = 10;
-    public int PlayerVit { get; private set; } = 10;
-    public int PlayerInt { get; private set; } = 10;
+    public int PlayerStr { get; private set; } = 10; // T
+    public int PlayerDef { get; private set; } = 10; // T
+    public int PlayerAgi { get; private set; } = 10; // T
+    public int PlayerVit { get; private set; } = 10; // T
+    public int PlayerInt { get; private set; } = 10; // T
     public int PlayerCha { get; private set; } = 10;
     public int PlayerLck { get; private set; } = 10;
 
@@ -33,6 +33,9 @@ public class PlayerData : MonoBehaviour
     public float MaxHp => (PlayerVit + Vit) * 10;
     public float Mp { get; private set; }
     public float MaxMp => (PlayerInt + Int) * 10;
+
+    // Random this variable between "PlayerDamage - 5" and "PlayerDamage + 5" in enemy's TakeDamage
+    public float PlayerDamage => (PlayerStr + Str) * 10;
 
     private void Start()
     {
@@ -104,6 +107,7 @@ public class PlayerData : MonoBehaviour
             ExpToLevelUp = CalculateExpToLevelUp();
             // Do other things when LevelUp
         }
+        UITextUpdate.Invoke();
     }
 
     private int CalculateExpToLevelUp()
