@@ -1891,6 +1891,7 @@ GameObject:
   - component: {fileID: 558587061}
   - component: {fileID: 558587062}
   - component: {fileID: 558587064}
+  - component: {fileID: 558587065}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1935,7 +1936,8 @@ MonoBehaviour:
   chatTextPrefab: {fileID: 700288744257261131, guid: 68b4b5314b35d154faf73250df966827, type: 3}
   chatBox: {fileID: 835974505}
   playerMessage: {r: 1, g: 1, b: 1, a: 1}
-  info: {r: 0.021875, g: 0.7, b: 0, a: 1}
+  gameInfo: {r: 0, g: 0.75, b: 0.0013076663, a: 1}
+  playerInfo: {r: 1, g: 1, b: 0, a: 1}
   messageList: []
 --- !u!114 &558587062
 MonoBehaviour:
@@ -1987,7 +1989,35 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 558587061}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: InfoMessage
+        m_MethodName: InventoryIsFull
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &558587065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558587058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9093acc2fc678214fa8bcb9f532b1123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: 4703855a0f8c9e04182467ee71a1b2fe, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 558587061}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: LevelUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5656,6 +5686,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  LevelUp: {fileID: 11400000, guid: 4703855a0f8c9e04182467ee71a1b2fe, type: 2}
 --- !u!136 &1339645998
 CapsuleCollider:
   m_ObjectHideFlags: 0

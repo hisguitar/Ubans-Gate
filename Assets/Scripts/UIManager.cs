@@ -19,11 +19,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image mpBar;
 
     [Header("SEND MESSAGE")]
-    [SerializeField] private string username;
+    public string username;
     [SerializeField] private int maxMessages = 25;
     [SerializeField] private GameObject chatPanel, chatTextPrefab;
     [SerializeField] private TMP_InputField chatBox;
-    [SerializeField] private Color playerMessage, info;
+    [SerializeField] private Color playerMessage, gameInfo, playerInfo;
     [SerializeField] private List<Message> messageList = new List<Message>();
 
     private float lerpSpeed;
@@ -78,9 +78,14 @@ public class UIManager : MonoBehaviour
         mpBar.fillAmount = Mathf.Clamp01(mpBar.fillAmount);
     }
 
-    public void InfoMessage()
+    public void InventoryIsFull()
     {
-        SendMessageToChat("Inventory Full! Cannot add more items.", Message.MessageType.info);
+        SendMessageToChat("Inventory Full! Cannot add more items.", Message.MessageType.gameInfo);
+    }
+
+    public void LevelUp()
+    {
+        SendMessageToChat(username + " has leveled up to " + playerData.Level + "!", Message.MessageType.playerInfo);
     }
 
     public void SendMessageToChat(string text, Message.MessageType messageType)
@@ -111,8 +116,12 @@ public class UIManager : MonoBehaviour
                 color = playerMessage;
                 break;
 
+            case Message.MessageType.playerInfo:
+                color = playerInfo;
+                break;
+
             default:
-                color = info;
+                color = gameInfo;
                 break;
         }
         return color;
@@ -135,7 +144,8 @@ public class Message
 
     public enum MessageType
     {
-        info,
-        playerMessage
+        gameInfo,
+        playerMessage,
+        playerInfo,
     }
 }

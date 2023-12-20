@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class PlayerData : MonoBehaviour
 {
     [SerializeField] private UnityEvent UITextUpdate;
+    [SerializeField] private Nf_GameEvent LevelUp;
 
     // STATS FROM PLAYER
     public int PlayerStr { get; private set; } = 10; // T
@@ -106,6 +107,7 @@ public class PlayerData : MonoBehaviour
             Exp -= ExpToLevelUp;
             ExpToLevelUp = CalculateExpToLevelUp();
             // Do other things when LevelUp
+            LevelUp.Raise();
         }
         UITextUpdate.Invoke();
     }
