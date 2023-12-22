@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -51,7 +52,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        //inventoryObject.OnItemAdded += HandleItemAdded;
+        // On typing
         if (messageInput.text != "")
         {
             if (Input.GetKeyDown(KeyCode.Return))
