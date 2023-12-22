@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image mpBar;
 
     [Header("MESSAGE")]
+    public bool alreadyHasName = false;
     public string username;
     [SerializeField] private int maxMessages = 25;
     [SerializeField] private Color whiteMessage = new Color(0.75f, 0.75f, 0.75f), greenMessage = new Color(0f, 0.6f, 0f), goldMessage = Color.yellow;
@@ -61,7 +62,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            if (!messageInput.isFocused && Input.GetKeyDown(KeyCode.Return))
+            if (!messageInput.isFocused && Input.GetKeyDown(KeyCode.Return) && alreadyHasName == true)
             {
                 messageInput.ActivateInputField();
             }
