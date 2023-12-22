@@ -2,47 +2,68 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private InventoryObject playerInventory;
     [SerializeField] private PlayerData playerData;
 
-    [Header("STATS FROM PLAYER + EQUIPMENT")]
+    [Header("STATS FROM PLAYER + EQUIPMENT + HP AND MP")]
     [SerializeField] private TMP_Text statsText;
-
-    [Header("HP AND MP")]
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private Image hpBar;
     [SerializeField] private TMP_Text mpText;
     [SerializeField] private Image mpBar;
 
-    [Header("SEND MESSAGE")]
+    [Header("MESSAGE")]
     public string username;
     [SerializeField] private int maxMessages = 25;
-    [SerializeField] private GameObject chatPanel, chatTextPrefab;
-    [SerializeField] private TMP_InputField chatBox;
-    [SerializeField] private Color playerMessage, gameInfo, playerInfo;
+    [SerializeField] private Color whiteMessage = new Color(0.75f, 0.75f, 0.75f), greenMessage = new Color(0f, 0.6f, 0f), goldMessage = Color.yellow;
+    [SerializeField] private GameObject chatPanel, messagePrefab;
+    [SerializeField] private TMP_InputField messageInput;
     [SerializeField] private List<Message> messageList = new List<Message>();
 
     private float lerpSpeed;
 
+    private void Start()
+    {
+        // Subscribe to event OnInventoryFull to be notified when Inventory is full.
+        playerInventory.OnInventoryFull += InventoryFull;
+        // Subscribe to event OnItemAdded to be notified when an Item is added.
+        playerInventory.OnItemAdded += ItemAdded;
+    }
+
+    #region Notification command set
+    public void InventoryFull(string text)
+    {
+        SendMessageToChat("[System] " + text, Message.MessageType.greenMessage);
+    }
+
+    // Event takes parameters as Item
+    private void ItemAdded(Item item)
+    {
+        // Debug _item.Name
+        SendMessageToChat($"[System] You have received <color=white>[{item.Name}]</color>", Message.MessageType.greenMessage);
+    }
+    #endregion
+
     private void Update()
     {
-        if (chatBox.text != "")
+        //inventoryObject.OnItemAdded += HandleItemAdded;
+        if (messageInput.text != "")
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                SendMessageToChat(GetFormattedTimestamp() + username + " : " + chatBox.text, Message.MessageType.playerMessage);
-                chatBox.text = "";
+                SendMessageToChat($"<color=#808080>{GetFormattedTimestamp()}</color><color=#00E600>{username}</color> : {messageInput.text}", Message.MessageType.whiteMessage);
+                messageInput.text = "";
             }
         }
         else
         {
-            if (!chatBox.isFocused && Input.GetKeyDown(KeyCode.Return))
+            if (!messageInput.isFocused && Input.GetKeyDown(KeyCode.Return))
             {
-                chatBox.ActivateInputField();
+                messageInput.ActivateInputField();
             }
         }
 
@@ -78,16 +99,6 @@ public class UIManager : MonoBehaviour
         mpBar.fillAmount = Mathf.Clamp01(mpBar.fillAmount);
     }
 
-    public void InventoryIsFull()
-    {
-        SendMessageToChat("Inventory Full! Cannot add more items.", Message.MessageType.gameInfo);
-    }
-
-    public void LevelUp()
-    {
-        SendMessageToChat(username + " has leveled up to " + playerData.Level + "!", Message.MessageType.playerInfo);
-    }
-
     public void SendMessageToChat(string text, Message.MessageType messageType)
     {
         // Limit amount of messages in chat box
@@ -99,7 +110,7 @@ public class UIManager : MonoBehaviour
 
         Message newMessage = new Message();
         newMessage.text = text;
-        GameObject newText = Instantiate(chatTextPrefab, chatPanel.transform);
+        GameObject newText = Instantiate(messagePrefab, chatPanel.transform);
         newMessage.chatTextPrefab = newText.GetComponent<TMP_Text>();
         newMessage.chatTextPrefab.text = newMessage.text;
         newMessage.chatTextPrefab.color = MessageTypeColor(messageType);
@@ -112,16 +123,16 @@ public class UIManager : MonoBehaviour
 
         switch (messageType)
         {
-            case Message.MessageType.playerMessage:
-                color = playerMessage;
+            case Message.MessageType.whiteMessage:
+                color = whiteMessage;
                 break;
 
-            case Message.MessageType.playerInfo:
-                color = playerInfo;
+            case Message.MessageType.goldMessage:
+                color = goldMessage;
                 break;
 
             default:
-                color = gameInfo;
+                color = greenMessage;
                 break;
         }
         return color;
@@ -144,8 +155,8 @@ public class Message
 
     public enum MessageType
     {
-        gameInfo,
-        playerMessage,
-        playerInfo,
+        greenMessage,
+        whiteMessage,
+        goldMessage,
     }
 }

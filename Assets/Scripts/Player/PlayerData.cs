@@ -3,8 +3,7 @@ using UnityEngine.Events;
 
 public class PlayerData : MonoBehaviour
 {
-    [SerializeField] private UnityEvent UITextUpdate;
-    [SerializeField] private Nf_GameEvent LevelUp;
+    [SerializeField] private UIManager UIManager;
 
     // STATS FROM PLAYER
     public int PlayerStr { get; private set; } = 10; // T
@@ -40,12 +39,14 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
+        UIManager = FindObjectOfType<UIManager>();
+
         // Default stats
         Hp = MaxHp;
         Mp = MaxMp;
 
         // Update UI when Start()
-        UITextUpdate.Invoke();
+        UIManager.UITextUpdate();
     }
 
     #region Upgrade-stats
@@ -55,50 +56,50 @@ public class PlayerData : MonoBehaviour
     public void UpdateStrength(int modifiedValue)
     {
         Str = modifiedValue;
-        UITextUpdate.Invoke();
+        UIManager.UITextUpdate();
     }
     // Def
     public void UpdateDefense(int modifiedValue)
     {
         Def = modifiedValue;
-        UITextUpdate.Invoke();
+        UIManager.UITextUpdate();
     }
     // Agi
     public void UpdateAgility(int modifiedValue)
     {
         Agi = modifiedValue;
-        UITextUpdate.Invoke();
+        UIManager.UITextUpdate();
     }
     // Vit
     public void UpdateVitality(int modifiedValue)
     {
         Vit = modifiedValue;
-        UITextUpdate.Invoke();
+        UIManager.UITextUpdate();
     }
     // Int
     public void UpdateIntelligence(int modifiedValue)
     {
         Int = modifiedValue;
-        UITextUpdate.Invoke();
+        UIManager.UITextUpdate();
     }
     // Cha
     public void UpdateCharisma(int modifiedValue)
     {
         Cha = modifiedValue;
-        UITextUpdate.Invoke();
+        UIManager.UITextUpdate();
     }
     // Lck
     public void UpdateLuck(int modifiedValue)
     {
         Lck = modifiedValue;
-        UITextUpdate.Invoke();
+        UIManager.UITextUpdate();
     }
     #endregion
     #region In-combat
     public void GainExp(int amount)
     {
         Exp += amount;
-
+        UIManager.SendMessageToChat($"[System] You have received {amount} Exp.", Message.MessageType.greenMessage);
         // Level Up!
         while (Exp >= ExpToLevelUp)
         {
@@ -106,10 +107,11 @@ public class PlayerData : MonoBehaviour
             Level++;
             Exp -= ExpToLevelUp;
             ExpToLevelUp = CalculateExpToLevelUp();
+
             // Do other things when LevelUp
-            LevelUp.Raise();
+            UIManager.SendMessageToChat($"[System] You has leveled up to {Level} !", Message.MessageType.goldMessage);
         }
-        UITextUpdate.Invoke();
+        UIManager.UITextUpdate();
     }
 
     private int CalculateExpToLevelUp()
@@ -152,7 +154,7 @@ public class PlayerData : MonoBehaviour
         }
 
         // Update UI
-        UITextUpdate.Invoke();
+        UIManager.UITextUpdate();
     }
 
     public void Heal(float amount)
@@ -162,7 +164,7 @@ public class PlayerData : MonoBehaviour
         {
             Hp = MaxHp;
         }
-        UITextUpdate.Invoke();
+        UIManager.UITextUpdate();
     }
 
     public void DecreaseMp(float amount)
@@ -175,7 +177,7 @@ public class PlayerData : MonoBehaviour
         {
             Mp -= amount;
         }
-        UITextUpdate.Invoke();
+        UIManager.UITextUpdate();
     }
 
     public void IncreaseMp(float amount)
@@ -188,7 +190,7 @@ public class PlayerData : MonoBehaviour
         {
             Mp = MaxMp;
         }
-        UITextUpdate.Invoke();
+        UIManager.UITextUpdate();
     }
     #endregion
 }

@@ -13,8 +13,15 @@ public enum InterfaceType
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject
 {
-    [Header("NF_GameEvent")]
-    [SerializeField] private Nf_GameEvent SendMessageToChat;
+    // Delegate or event for notification
+    // when inventory is full.
+    public delegate void InventoryFullEvent(string text);
+    public event InventoryFullEvent OnInventoryFull;
+    // when an item is added.
+    public delegate void ItemAddedEvent(Item item);
+    public event ItemAddedEvent OnItemAdded;
+
+    // ======================================
 
     [Header("InventoryObject Variables")]
     public string savePath;
@@ -27,14 +34,14 @@ public class InventoryObject : ScriptableObject
     {
         if (EmptySlotCount <= 0)
         {
-            Debug.Log("Inventory is full");
-            SendMessageToChat.Raise();
+            OnInventoryFull?.Invoke("Your inventory is full."); // OnInventoryFull Event, send text
             return false;
         }
         InventorySlot slot = FindItemOnInventory(_item);
         if (!database.ItemsObjects[_item.Id].stackable || slot == null)
         {
             SetEmptySlot(_item, _amount);
+            OnItemAdded?.Invoke(_item); // OnItemAdded Event, send _item data
             return true;
         }
         slot.AddAmount(_amount);
