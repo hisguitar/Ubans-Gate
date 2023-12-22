@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52867ece651d0ef47a9394b81f704843, type: 3}
   m_Name: ParticleData
   m_EditorClassIdentifier: 
-  clickEffectPrefab: {fileID: 0}
+  clickEffectPrefab: {fileID: 7051215003821542131, guid: acd92c862c8ac754dabe119845dae2bc, type: 3}
