@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerData : MonoBehaviour
 {
@@ -99,7 +98,7 @@ public class PlayerData : MonoBehaviour
     public void GainExp(int amount)
     {
         Exp += amount;
-        UIManager.SendMessageToChat($"[System] You have received {amount} Exp.", Message.MessageType.greenMessage);
+        UIManager.SendMessageToChat($"You have received {amount} Exp.", Message.MessageType.greenMessage);
         // Level Up!
         while (Exp >= ExpToLevelUp)
         {
@@ -109,7 +108,7 @@ public class PlayerData : MonoBehaviour
             ExpToLevelUp = CalculateExpToLevelUp();
 
             // Do other things when LevelUp
-            UIManager.SendMessageToChat($"[System] You has leveled up to {Level} !", Message.MessageType.goldMessage);
+            UIManager.SendMessageToChat($"You has leveled up to {Level} !", Message.MessageType.goldMessage);
         }
         UIManager.UITextUpdate();
     }

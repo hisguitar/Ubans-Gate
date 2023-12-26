@@ -158,7 +158,7 @@ public class InventoryObject : ScriptableObject
 public class Inventory
 {
     //public List<InventorySlot> Items = new List<InventorySlot>();
-    public InventorySlot[] Slots = new InventorySlot[10];
+    public InventorySlot[] Slots = new InventorySlot[20];
     public void Clear()
     {
         for (int i = 0;i < Slots.Length; i++)

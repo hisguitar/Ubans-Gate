@@ -18,13 +18,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image mpBar;
 
     [Header("MESSAGE")]
-    public bool alreadyHasName = false;
-    public string username;
     [SerializeField] private int maxMessages = 25;
-    [SerializeField] private Color whiteMessage = new Color(0.75f, 0.75f, 0.75f), greenMessage = new Color(0f, 0.6f, 0f), goldMessage = Color.yellow;
     [SerializeField] private GameObject chatPanel, messagePrefab;
-    [SerializeField] private TMP_InputField messageInput;
-    [SerializeField] private List<Message> messageList = new List<Message>();
+    [SerializeField] private List<Message> messageList = new();
 
     private float lerpSpeed;
 
@@ -39,36 +35,19 @@ public class UIManager : MonoBehaviour
     #region Notification command set
     public void InventoryFull(string text)
     {
-        SendMessageToChat("[System] " + text, Message.MessageType.greenMessage);
+        SendMessageToChat(text, Message.MessageType.greenMessage);
     }
 
     // Event takes parameters as Item
     private void ItemAdded(Item item)
     {
         // Debug _item.Name
-        SendMessageToChat($"[System] You have received <color=white>[{item.Name}]</color>", Message.MessageType.greenMessage);
+        SendMessageToChat($"You have received <color=white>[{item.Name}]</color>", Message.MessageType.greenMessage);
     }
     #endregion
 
     private void Update()
     {
-        // On typing
-        if (messageInput.text != "")
-        {
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                SendMessageToChat($"<color=#808080>{GetFormattedTimestamp()}</color><color=#00E600>{username}</color> : {messageInput.text}", Message.MessageType.whiteMessage);
-                messageInput.text = "";
-            }
-        }
-        else
-        {
-            if (!messageInput.isFocused && Input.GetKeyDown(KeyCode.Return) && alreadyHasName == true)
-            {
-                messageInput.ActivateInputField();
-            }
-        }
-
         lerpSpeed = 3f * Time.deltaTime;
         UIBarFiller();
     }
@@ -126,25 +105,18 @@ public class UIManager : MonoBehaviour
         switch (messageType)
         {
             case Message.MessageType.whiteMessage:
-                color = whiteMessage;
+                color = Color.white;
                 break;
 
             case Message.MessageType.goldMessage:
-                color = goldMessage;
+                color = Color.yellow;
                 break;
 
             default:
-                color = greenMessage;
+                color = Color.green;
                 break;
         }
         return color;
-    }
-
-    private string GetFormattedTimestamp()
-    {
-        DateTime now = DateTime.Now;
-        string formattedTime = $"[{now.Hour:D2}:{now.Minute:D2}] ";
-        return formattedTime;
     }
 }
 

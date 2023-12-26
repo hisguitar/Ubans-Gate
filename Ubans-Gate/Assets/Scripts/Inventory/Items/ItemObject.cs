@@ -54,7 +54,7 @@ public class Item
     }
     public Item(ItemObject item)
     {
-        Name = item.name;
+        Name = item.data.Name;
         Id = item.data.Id;
         buffs = new ItemBuff[item.data.buffs.Length];
         for (int i = 0; i < buffs.Length; i++)

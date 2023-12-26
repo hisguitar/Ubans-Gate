@@ -12,12 +12,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c2a630732e6064b9280dc477de3bd1, type: 3}
   m_Name: Player_Inventory
   m_EditorClassIdentifier: 
-  SendMessageToChat: {fileID: 11400000, guid: ba8c601e6938c9240bd6c39e9db8b72f, type: 2}
   savePath: /inventory.Save
   database: {fileID: 11400000, guid: 77e462bab31871643850b074fb69fd62, type: 2}
   type: 0
   Container:
     Slots:
+    - AllowedItems: 
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
     - AllowedItems: 
       item:
         Name: 
