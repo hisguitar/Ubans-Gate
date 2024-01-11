@@ -30,14 +30,13 @@ public class UIManager : MonoBehaviour
     {
         // ATTRIBUTES FROM PLAYER + EQUIPMENT
         statsText.text =
-            $"STR : <color=white>{playerData.PlayerStr}</color>{((playerData.Str.ToString() == "0") ? "" : $" <color=green>+ {playerData.Str}</color>")}{Environment.NewLine}" +
-            $"DEF : <color=white>{playerData.PlayerDef}</color>{((playerData.Def.ToString() == "0") ? "" : $" <color=green>+ {playerData.Def}</color>")}{Environment.NewLine}" +
-            $"AGI : <color=white>{playerData.PlayerAgi}</color>{((playerData.Agi.ToString() == "0") ? "" : $" <color=green>+ {playerData.Agi}</color>")}{Environment.NewLine}" +
-            $"VIT : <color=white>{playerData.PlayerVit}</color>{((playerData.Vit.ToString() == "0") ? "" : $" <color=green>+ {playerData.Vit}</color>")}{Environment.NewLine}" +
-            $"INT : <color=white>{playerData.PlayerInt}</color>{((playerData.Int.ToString() == "0") ? "" : $" <color=green>+ {playerData.Int}</color>")}{Environment.NewLine}" +
-            $"CHA : <color=white>{playerData.PlayerCha}</color>{((playerData.Cha.ToString() == "0") ? "" : $" <color=green>+ {playerData.Cha}</color>")}{Environment.NewLine}" +
-            $"LCK : <color=white>{playerData.PlayerLck}</color>{((playerData.Lck.ToString() == "0") ? "" : $" <color=green>+ {playerData.Lck}</color>")}{Environment.NewLine}{Environment.NewLine}" +
-            $"EXP : <color=yellow>{playerData.Exp} / {playerData.ExpToLevelUp}</color>";
+            $"STR <color=white>{playerData.PlayerStr}</color>{((playerData.Str.ToString() == "0") ? "" : $" <color=green>+ {playerData.Str}</color>")}{Environment.NewLine}" +
+            $"DEF <color=white>{playerData.PlayerDef}</color>{((playerData.Def.ToString() == "0") ? "" : $" <color=green>+ {playerData.Def}</color>")}{Environment.NewLine}" +
+            $"AGI <color=white>{playerData.PlayerAgi}</color>{((playerData.Agi.ToString() == "0") ? "" : $" <color=green>+ {playerData.Agi}</color>")}{Environment.NewLine}" +
+            $"VIT <color=white>{playerData.PlayerVit}</color>{((playerData.Vit.ToString() == "0") ? "" : $" <color=green>+ {playerData.Vit}</color>")}{Environment.NewLine}" +
+            $"INT <color=white>{playerData.PlayerInt}</color>{((playerData.Int.ToString() == "0") ? "" : $" <color=green>+ {playerData.Int}</color>")}{Environment.NewLine}" +
+            $"LCK <color=white>{playerData.PlayerLck}</color>{((playerData.Lck.ToString() == "0") ? "" : $" <color=green>+ {playerData.Lck}</color>")}{Environment.NewLine}{Environment.NewLine}" +
+            $"EXP <color=yellow>{playerData.Exp} / {playerData.ExpToLevelUp}</color>";
 
         // STATS DISPLAYED ON UI
         hpText.text = $"{playerData.Hp:F0}/{playerData.MaxHp:F0}";

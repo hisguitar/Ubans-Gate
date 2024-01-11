@@ -18,7 +18,6 @@ public enum Attributes
     Agility, // Increase "movement speed"
     Vitality, // Increase "MaxHp"
     Intelligence, // Increase "Heal"
-    Charisma,
     Luck
 }
 

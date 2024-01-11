@@ -143,11 +143,6 @@ public class PlayerInventory : MonoBehaviour
         {
             playerData.UpdateIntelligence(attribute.value.ModifiedValue);
         }
-        // Cha
-        if (attribute.type == Attributes.Charisma)
-        {
-            playerData.UpdateCharisma(attribute.value.ModifiedValue);
-        }
         // Lck
         if (attribute.type == Attributes.Luck)
         {

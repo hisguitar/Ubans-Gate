@@ -10,7 +10,6 @@ public class PlayerData : MonoBehaviour
     public int PlayerAgi { get; private set; } = 10; // T
     public int PlayerVit { get; private set; } = 10; // T
     public int PlayerInt { get; private set; } = 10; // T
-    public int PlayerCha { get; private set; } = 10;
     public int PlayerLck { get; private set; } = 10;
 
     // STATS FROM EQUIPMENT
@@ -19,7 +18,6 @@ public class PlayerData : MonoBehaviour
     public int Agi { get; private set; }
     public int Vit { get; private set; }
     public int Int { get; private set; }
-    public int Cha { get; private set; }
     public int Lck { get; private set; }
 
     // EXP AND LEVEL
@@ -79,12 +77,6 @@ public class PlayerData : MonoBehaviour
     public void UpdateIntelligence(int modifiedValue)
     {
         Int = modifiedValue;
-        UIManager.UITextUpdate();
-    }
-    // Cha
-    public void UpdateCharisma(int modifiedValue)
-    {
-        Cha = modifiedValue;
         UIManager.UITextUpdate();
     }
     // Lck
