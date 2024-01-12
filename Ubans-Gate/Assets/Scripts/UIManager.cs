@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -12,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     [Header("STATS FROM PLAYER + EQUIPMENT + HP AND MP")]
     [SerializeField] private TMP_Text statsText;
+    [SerializeField] private TMP_Text levelText;
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private Image hpBar;
     [SerializeField] private TMP_Text mpText;
@@ -39,6 +38,7 @@ public class UIManager : MonoBehaviour
             $"EXP <color=yellow>{playerData.Exp} / {playerData.ExpToLevelUp}</color>";
 
         // STATS DISPLAYED ON UI
+        levelText.text = $"Lv.{playerData.Level}";
         hpText.text = $"{playerData.Hp:F0}/{playerData.MaxHp:F0}";
         mpText.text = $"{playerData.Mp:F0}/{playerData.MaxMp:F0}";
     }

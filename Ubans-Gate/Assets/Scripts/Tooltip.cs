@@ -5,11 +5,17 @@ using UnityEngine.UI;
 [ExecuteInEditMode]
 public class Tooltip : MonoBehaviour
 {
+    /// <summary>
+    /// 1. Add this GameObject to "layoutElement" and "rectTransform"
+    /// 2. Add component Vertical Layout Group, Set padding as you want and tick width and height of control child size
+    /// 3. Add component Content Size Fitter, Set horizontal fit and vertical fit to "Preferred Size"
+    /// 4. Add component Layout Element, Tick preferred width and set to about 500
+    /// </summary>
     public LayoutElement layoutElement;
+    public RectTransform rectTransform;
     public TMP_Text headerText;
     public TMP_Text contentText;
     public int characterWrapLimit;
-    public RectTransform rectTransform;
 
     private void Awake()
     {

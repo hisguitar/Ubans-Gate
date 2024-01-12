@@ -92,6 +92,11 @@ public class PlayerData : MonoBehaviour
     public void GainExp(int amount)
     {
         Exp += amount;
+        if (floatingTextPrefab != null)
+        {
+            ShowFloatingText($"+{amount} EXP", new Color(1f, 0.9176f, 0f)); //FFEA00
+        }
+
         // Level Up!
         while (Exp >= ExpToLevelUp)
         {
@@ -101,6 +106,10 @@ public class PlayerData : MonoBehaviour
             ExpToLevelUp = CalculateExpToLevelUp();
 
             // Do other things when LevelUp
+            if (floatingTextPrefab != null)
+            {
+                ShowFloatingText($"Level up to {Level}!", new Color(1f, 0.9176f, 0f)); //FFEA00
+            }
         }
         UIManager.UITextUpdate();
     }
@@ -136,16 +145,14 @@ public class PlayerData : MonoBehaviour
         }
 
         // Random damage modifier
-        int randomDamage = Mathf.FloorToInt(Random.Range(-5f, 5f)); // Note that Random.Range does not include the maximum value.
+        int randomDamage = (int)Random.Range(-5f, 5f); // Note that Random.Range does not include the maximum value.
         #endregion
         #region Take Damage
         // Take Damage
         Hp -= (totalDamage + randomDamage);
         if (floatingTextPrefab != null)
         {
-            GameObject go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
-            go.GetComponent<TMP_Text>().color = new Color(1f, 0.439f, 0.251f); //FF7040
-            go.GetComponent<TMP_Text>().text = "-" + (totalDamage + randomDamage).ToString();
+            ShowFloatingText($"-{totalDamage + randomDamage} HP", new Color(1f, 0.439f, 0.251f)); //FF7040
         }
 
         // Check if player die
@@ -166,9 +173,7 @@ public class PlayerData : MonoBehaviour
         Hp += totalHeal;
         if (floatingTextPrefab != null)
         {
-            GameObject go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
-            go.GetComponent<TMP_Text>().color = new Color(0.5686f, 1f, 0.251f); //91FF40
-            go.GetComponent<TMP_Text>().text = "+" + totalHeal.ToString();
+            ShowFloatingText($"+{totalHeal} HP", new Color(0.5686f, 1f, 0.251f)); //91FF40
         }
         if (Hp > MaxHp)
         {
@@ -186,6 +191,10 @@ public class PlayerData : MonoBehaviour
         else
         {
             Mp -= amount;
+            if (floatingTextPrefab != null)
+            {
+                ShowFloatingText($"-{amount} MP", new Color(0f, 0.3333f, 1f)); //0055FF
+            }
         }
         UIManager.UITextUpdate();
     }
@@ -195,6 +204,10 @@ public class PlayerData : MonoBehaviour
         if (Mp < MaxMp)
         {
             Mp += amount;
+            if (floatingTextPrefab != null)
+            {
+                ShowFloatingText($"+{amount} MP", new Color(0f, 1f, 0.8314f)); //00FFD4
+            }
         }
         if (Mp > MaxMp)
         {
@@ -203,4 +216,12 @@ public class PlayerData : MonoBehaviour
         UIManager.UITextUpdate();
     }
     #endregion
+
+    private void ShowFloatingText(string text, Color textColor)
+    {
+        GameObject go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+        go.GetComponent<TMP_Text>().color = textColor;
+        go.GetComponent<TMP_Text>().text = text;
+    }
+
 }

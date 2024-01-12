@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 172540441}
   - component: {fileID: 172540443}
   - component: {fileID: 172540442}
+  - component: {fileID: 172540444}
   m_Layer: 5
   m_Name: Stats_Text
   m_TagString: Untagged
@@ -271,6 +272,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172540440}
   m_CullTransparentMesh: 1
+--- !u!114 &172540444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172540440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c721e7ad718242b499002181abf1f03b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  header: 
+  content: 'Player Stats : Strength (STR), Defense (DEF), Agility (AGI), Vitality
+    (VIT), Intelligence (INT), Luck (LCK), Experience Point (EXP)'
 --- !u!1 &230318828
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,11 +593,11 @@ RectTransform:
   m_Father: {fileID: 829601786}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 230, y: 190}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &321000717
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,7 +690,7 @@ GameObject:
   - component: {fileID: 356004319}
   - component: {fileID: 356004317}
   m_Layer: 5
-  m_Name: Tooltip_System
+  m_Name: Tooltip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -693,10 +709,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layoutElement: {fileID: 356004319}
+  rectTransform: {fileID: 356004318}
   headerText: {fileID: 1718830865}
   contentText: {fileID: 1288356936}
   characterWrapLimit: 80
-  rectTransform: {fileID: 356004318}
 --- !u!224 &356004318
 RectTransform:
   m_ObjectHideFlags: 0
@@ -734,7 +750,7 @@ MonoBehaviour:
   m_IgnoreLayout: 0
   m_MinWidth: -1
   m_MinHeight: -1
-  m_PreferredWidth: 500
+  m_PreferredWidth: 440
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -1378,7 +1394,6 @@ GameObject:
   - component: {fileID: 558587063}
   - component: {fileID: 558587060}
   - component: {fileID: 558587061}
-  - component: {fileID: 558587062}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1414,23 +1429,11 @@ MonoBehaviour:
   playerInventory: {fileID: 11400000, guid: b999bf1020765614ab877d5fe3fa7ee3, type: 2}
   playerData: {fileID: 1339645997}
   statsText: {fileID: 172540442}
+  levelText: {fileID: 2102629121}
   hpText: {fileID: 1970629335}
   hpBar: {fileID: 321000719}
   mpText: {fileID: 842848580}
   mpBar: {fileID: 922459182}
---- !u!114 &558587062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558587058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ff0ee063fa317e40a1c1032efcaca72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  equipmentInventory: {fileID: 1716739829}
 --- !u!224 &558587063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1535,13 +1538,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 558587062}
-        m_TargetAssemblyTypeName: Toggle, Assembly-CSharp
-        m_MethodName: ToggleWindow
-        m_Mode: 2
+      - m_Target: {fileID: 1716739832}
+        m_TargetAssemblyTypeName: ToggleWindow, Assembly-CSharp
+        m_MethodName: OnOpenOrClose
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1716739829}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3705,8 +3708,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4162,6 +4165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1716739830}
   - component: {fileID: 1716739831}
+  - component: {fileID: 1716739832}
   m_Layer: 5
   m_Name: Equipment_Inventory_Group
   m_TagString: Untagged
@@ -4205,6 +4209,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   window: {fileID: 829601785}
+--- !u!114 &1716739832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716739829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff0ee063fa317e40a1c1032efcaca72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1717975777
 GameObject:
   m_ObjectHideFlags: 0
@@ -4374,8 +4390,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4564,7 +4580,7 @@ GameObject:
   - component: {fileID: 1766899104}
   - component: {fileID: 1766899103}
   m_Layer: 5
-  m_Name: Tooltip_Canvas
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
