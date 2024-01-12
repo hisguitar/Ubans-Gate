@@ -91,8 +91,9 @@ public class PlayerData : MonoBehaviour
     #region In-combat
     public void GainExp(int amount)
     {
+        // Gain Exp
         Exp += amount;
-        if (floatingTextPrefab != null)
+        if (floatingTextPrefab != null && Exp < ExpToLevelUp)
         {
             ShowFloatingText($"+{amount} EXP", new Color(255f/255f, 235f/255f, 0f/255f)); //FFEA00 (RGB 0-255)
         }
