@@ -1,8 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
     [SerializeField] private UIManager UIManager;
+    [SerializeField] private GameObject floatingTextPrefab;
 
     // STATS FROM PLAYER
     public int PlayerStr { get; private set; } = 10; // T
@@ -110,6 +112,7 @@ public class PlayerData : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        #region Calculate Damage
         // Calculate damage rate
         float totalDamage = amount;
         float damageRate = totalDamage / 200;
@@ -132,8 +135,18 @@ public class PlayerData : MonoBehaviour
             totalDamage -= defPercentage;
         }
 
+        // Random damage modifier
+        int randomDamage = Mathf.FloorToInt(Random.Range(-5f, 5f)); // Note that Random.Range does not include the maximum value.
+        #endregion
+        #region Take Damage
         // Take Damage
-        Hp -= totalDamage;
+        Hp -= (totalDamage + randomDamage);
+        if (floatingTextPrefab != null)
+        {
+            GameObject go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+            go.GetComponent<TMP_Text>().color = new Color(1f, 0.439f, 0.251f); //FF7040
+            go.GetComponent<TMP_Text>().text = "-" + (totalDamage + randomDamage).ToString();
+        }
 
         // Check if player die
         if (Hp < 1)
@@ -144,11 +157,19 @@ public class PlayerData : MonoBehaviour
 
         // Update UI
         UIManager.UITextUpdate();
+        #endregion
     }
 
     public void Heal(float amount)
     {
-        Hp += amount + (PlayerInt + Int);
+        float totalHeal = amount + (PlayerInt + Int);
+        Hp += totalHeal;
+        if (floatingTextPrefab != null)
+        {
+            GameObject go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+            go.GetComponent<TMP_Text>().color = new Color(0.5686f, 1f, 0.251f); //91FF40
+            go.GetComponent<TMP_Text>().text = "+" + totalHeal.ToString();
+        }
         if (Hp > MaxHp)
         {
             Hp = MaxHp;
