@@ -94,7 +94,7 @@ public class PlayerData : MonoBehaviour
         Exp += amount;
         if (floatingTextPrefab != null)
         {
-            ShowFloatingText($"+{amount} EXP", new Color(1f, 0.9176f, 0f)); //FFEA00
+            ShowFloatingText($"+{amount} EXP", new Color(255f/255f, 235f/255f, 0f/255f)); //FFEA00 (RGB 0-255)
         }
 
         // Level Up!
@@ -108,7 +108,7 @@ public class PlayerData : MonoBehaviour
             // Do other things when LevelUp
             if (floatingTextPrefab != null)
             {
-                ShowFloatingText($"Level up to {Level}!", new Color(1f, 0.9176f, 0f)); //FFEA00
+                ShowFloatingText($"Level up to {Level}!", new Color(255f/255f, 235f/255f, 0f/255f)); //FFEA00 (RGB 0-255)
             }
         }
         UIManager.UITextUpdate();
@@ -152,7 +152,7 @@ public class PlayerData : MonoBehaviour
         Hp -= (totalDamage + randomDamage);
         if (floatingTextPrefab != null)
         {
-            ShowFloatingText($"-{totalDamage + randomDamage} HP", new Color(1f, 0.439f, 0.251f)); //FF7040
+            ShowFloatingText($"-{totalDamage + randomDamage} HP", new Color(255f/255f, 20f/255f, 0f/255f)); //FF1400 (RGB 0-255)
         }
 
         // Check if player die
@@ -173,7 +173,7 @@ public class PlayerData : MonoBehaviour
         Hp += totalHeal;
         if (floatingTextPrefab != null)
         {
-            ShowFloatingText($"+{totalHeal} HP", new Color(0.5686f, 1f, 0.251f)); //91FF40
+            ShowFloatingText($"+{totalHeal} HP", new Color(145f/255f, 255f/255f, 0f/255f)); //91FF40 (RGB 0-255)
         }
         if (Hp > MaxHp)
         {
@@ -193,7 +193,7 @@ public class PlayerData : MonoBehaviour
             Mp -= amount;
             if (floatingTextPrefab != null)
             {
-                ShowFloatingText($"-{amount} MP", new Color(0f, 0.3333f, 1f)); //0055FF
+                ShowFloatingText($"-{amount} MP", new Color(0f/255f, 110f/255f, 255f/255f)); //0055FF (RGB 0-255)
             }
         }
         UIManager.UITextUpdate();
@@ -206,7 +206,7 @@ public class PlayerData : MonoBehaviour
             Mp += amount;
             if (floatingTextPrefab != null)
             {
-                ShowFloatingText($"+{amount} MP", new Color(0f, 1f, 0.8314f)); //00FFD4
+                ShowFloatingText($"+{amount} MP", new Color(255f/255f, 85f/255f, 255f/255f)); //40A0FF (RGB 0-255)
             }
         }
         if (Mp > MaxMp)
@@ -219,9 +219,8 @@ public class PlayerData : MonoBehaviour
 
     private void ShowFloatingText(string text, Color textColor)
     {
-        GameObject go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity, transform);
+        GameObject go = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
         go.GetComponent<TMP_Text>().color = textColor;
         go.GetComponent<TMP_Text>().text = text;
     }
-
 }
