@@ -4,9 +4,9 @@ using TMPro;
 
 public class DropdownPopup : MonoBehaviour
 {
-    public GameObject dropdownPopup;
-    public float slideTime = 0.5f;
-    public float displayTime = 2f;
+    [SerializeField] private GameObject dropdownPopup;
+    [SerializeField] private float slideTime = 0.5f;
+    [SerializeField] private float displayTime = 2f;
 
     private void Start()
     {

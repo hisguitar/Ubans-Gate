@@ -433,7 +433,6 @@ GameObject:
   - component: {fileID: 232392794}
   - component: {fileID: 232392796}
   - component: {fileID: 232392795}
-  - component: {fileID: 232392797}
   - component: {fileID: 232392800}
   - component: {fileID: 232392801}
   m_Layer: 5
@@ -502,21 +501,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232392793}
   m_CullTransparentMesh: 1
---- !u!114 &232392797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 232392793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74a7be62e667a0245b6845c687ddba47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropdownPopup: {fileID: 232392793}
-  slideTime: 0.5
-  displayTime: 2
 --- !u!114 &232392800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1529,6 +1513,7 @@ GameObject:
   - component: {fileID: 558587063}
   - component: {fileID: 558587060}
   - component: {fileID: 558587061}
+  - component: {fileID: 558587064}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1589,6 +1574,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &558587064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558587058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a7be62e667a0245b6845c687ddba47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdownPopup: {fileID: 232392793}
+  slideTime: 0.5
+  displayTime: 2
 --- !u!1 &581355483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2755,7 +2755,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 232392797}
+      - m_Target: {fileID: 558587064}
         m_TargetAssemblyTypeName: DropdownPopup, Assembly-CSharp
         m_MethodName: ShowPopup
         m_Mode: 5
@@ -5528,6 +5528,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 558587064}
+        m_TargetAssemblyTypeName: DropdownPopup, Assembly-CSharp
+        m_MethodName: ShowPopup
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: The latest save has been loaded!
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1867589088
