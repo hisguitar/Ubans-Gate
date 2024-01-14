@@ -73,8 +73,6 @@ public class Player : MonoBehaviour
             PlayerVit = playerData.Vit;
             PlayerInt = playerData.Int;
             PlayerLck = playerData.Lck;
-
-            transform.position = new Vector3(playerData.Position[0], playerData.Position[1], playerData.Position[2]);
             
             UIManager.UITextUpdate();
             Debug.Log("Player data Loaded");

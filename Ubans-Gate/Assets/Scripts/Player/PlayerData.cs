@@ -17,7 +17,6 @@ public class PlayerData
     public int Vit;
     public int Int;
     public int Lck;
-    public float[] Position;
 
     public PlayerData (Player player)
     {
@@ -33,10 +32,5 @@ public class PlayerData
         this.Vit = player.PlayerVit;
         this.Int = player.PlayerInt;
         this.Lck = player.PlayerLck;
-
-        Position = new float[3];
-        Position[0] = player.transform.position.x;
-        Position[1] = player.transform.position.y;
-        Position[2] = player.transform.position.z;
     }
 }
