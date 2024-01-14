@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [SerializeField] private PlayerData playerData;
+    [SerializeField] private Player player;
 
     // Inventory and Items variable
     [SerializeField] private InventoryObject inventory;
@@ -13,7 +13,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void Start()
     {
-        playerData = GetComponent<PlayerData>();
+        player = GetComponent<Player>();
 
         for (int i = 0; i < attributes.Length; i++)
         {
@@ -98,18 +98,15 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void SaveInventory()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            inventory.Save();
-            equipment.Save();
-        }
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            inventory.Load();
-            equipment.Load();
-        }
+        inventory.Save();
+        equipment.Save();
+    }
+    public void LoadInventory()
+    {
+        inventory.Load();
+        equipment.Load();
     }
     
     public void AttributeModified(Attribute attribute)
@@ -121,45 +118,45 @@ public class PlayerInventory : MonoBehaviour
         // Str
         if (attribute.type == Attributes.Strength)
         {
-            playerData.UpdateStrength(attribute.value.ModifiedValue);
+            player.UpdateStrength(attribute.value.ModifiedValue);
         }
         // Def
         if (attribute.type == Attributes.Defense)
         {
-            playerData.UpdateDefense(attribute.value.ModifiedValue);
+            player.UpdateDefense(attribute.value.ModifiedValue);
         }
         // Agi
         if (attribute.type == Attributes.Agility)
         {
-            playerData.UpdateAgility(attribute.value.ModifiedValue);
+            player.UpdateAgility(attribute.value.ModifiedValue);
         }
         // Vit
         if (attribute.type == Attributes.Vitality)
         {
-            playerData.UpdateVitality(attribute.value.ModifiedValue);
+            player.UpdateVitality(attribute.value.ModifiedValue);
         }
         // Int
         if (attribute.type == Attributes.Intelligence)
         {
-            playerData.UpdateIntelligence(attribute.value.ModifiedValue);
+            player.UpdateIntelligence(attribute.value.ModifiedValue);
         }
         // Lck
         if (attribute.type == Attributes.Luck)
         {
-            playerData.UpdateLuck(attribute.value.ModifiedValue);
+            player.UpdateLuck(attribute.value.ModifiedValue);
         }
     }
 
     // Update player stats to no greater than the maximum value.
     public void OnRemoveItemUpdate()
     {
-        if (playerData.Hp > playerData.MaxHp)
+        if (player.Hp > player.MaxHp)
         {
-            playerData.Heal(0);
+            player.Heal(0);
         }
-        if (playerData.Mp > playerData.MaxMp)
+        if (player.Mp > player.MaxMp)
         {
-            playerData.IncreaseMp(0);
+            player.IncreaseMp(0);
         }
     }
 

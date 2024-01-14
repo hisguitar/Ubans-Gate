@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovementDirectional : MonoBehaviour
 {
-    [SerializeField] private PlayerData playerData;
+    [SerializeField] private Player player;
 
     private PlayerInput playerInput;
     private InputActionMap actionMap;
@@ -15,7 +15,7 @@ public class PlayerMovementDirectional : MonoBehaviour
     private void Awake()
     {
         // Get the PlayerData component attached to the player GameObject
-        playerData = GetComponent<PlayerData>();
+        player = GetComponent<Player>();
 
         // Get the CharacterController component attached to the player GameObject
         characterController = GetComponent<CharacterController>();
@@ -56,7 +56,7 @@ public class PlayerMovementDirectional : MonoBehaviour
         }
 
         // Calculate the final movement vector
-        movement = movementDirection * (playerData.PlayerAgi + playerData.Agi) * Time.deltaTime;
+        movement = movementDirection * (player.PlayerAgi + player.Agi) * Time.deltaTime;
 
         // Apply the movement to the player using CharacterController
         characterController.Move(movement);

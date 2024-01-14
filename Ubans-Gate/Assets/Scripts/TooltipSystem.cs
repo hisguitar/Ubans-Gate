@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TooltipSystem : MonoBehaviour
 {
-    private static PlayerData playerData;
+    private static Player player;
     private static TooltipSystem current;
     public Tooltip tooltip;
 
@@ -10,7 +10,7 @@ public class TooltipSystem : MonoBehaviour
     {
         current = this;
 
-        playerData = FindObjectOfType<PlayerData>();
+        player = FindObjectOfType<Player>();
     }
 
     public static void Show(string content, string header = "")
@@ -18,13 +18,13 @@ public class TooltipSystem : MonoBehaviour
         switch (content)
         {
             case "Level":
-                content = $"Level {playerData.Level}";
+                content = $"Level {player.Level}";
                 break;
             case "Hit Points":
-                content = "Hit Points " + playerData.Hp + "/" + playerData.MaxHp;
+                content = "Hit Points " + player.Hp + "/" + player.MaxHp;
                 break;
             case "Mana Points":
-                content = "Mana Points " + playerData.Mp + "/" + playerData.MaxMp;
+                content = "Mana Points " + player.Mp + "/" + player.MaxMp;
                 break;
         }
 

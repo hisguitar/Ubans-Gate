@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(PlayerData))]
+[RequireComponent(typeof(Player))]
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerMovementPositional : MonoBehaviour
 {

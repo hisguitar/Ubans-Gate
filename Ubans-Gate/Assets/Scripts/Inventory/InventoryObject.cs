@@ -108,14 +108,10 @@ public class InventoryObject : ScriptableObject
         }
     }
 
+    // Save to C:\Users\Admin\AppData\LocalLow
     [ContextMenu("Save")]
     public void Save()
     {
-        //string saveData = JsonUtility.ToJson(this, true);
-        //BinaryFormatter bf = new BinaryFormatter();
-        //FileStream file = File.Create(string.Concat(Application.persistentDataPath, savePath));
-        //bf.Serialize(file, saveData);
-        //file.Close();
         IFormatter formatter = new BinaryFormatter();
         Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Create, FileAccess.Write);
         formatter.Serialize(stream, Container);
@@ -124,16 +120,12 @@ public class InventoryObject : ScriptableObject
         Debug.Log("Inventory Saved");
     }
 
+    // Load from C:\Users\Admin\AppData\LocalLow
     [ContextMenu("Load")]
     public void Load()
     {
         if (File.Exists(string.Concat(Application.persistentDataPath, savePath)))
         {
-            //BinaryFormatter bf = new BinaryFormatter();
-            //FileStream file = File.Open(string.Concat(Application.persistentDataPath, savePath), FileMode.Open);
-            //JsonUtility.FromJsonOverwrite(bf.Deserialize(file).ToString(), this);
-            //file.Close();
-
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Open, FileAccess.Read);
             Inventory newContainer = (Inventory)formatter.Deserialize(stream);
@@ -157,7 +149,6 @@ public class InventoryObject : ScriptableObject
 [System.Serializable]
 public class Inventory
 {
-    //public List<InventorySlot> Items = new List<InventorySlot>();
     public InventorySlot[] Slots = new InventorySlot[20];
     public void Clear()
     {
