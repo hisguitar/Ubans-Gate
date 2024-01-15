@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5222935425351107706}
   - component: {fileID: 9211061413413669855}
   - component: {fileID: 6354777830085410581}
-  - component: {fileID: 8338212555980407585}
   - component: {fileID: 612297917670196469}
+  - component: {fileID: 1036861106}
   m_Layer: 0
-  m_Name: Staff
+  m_Name: Beginner_Staff
   m_TagString: Selectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,19 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8338212555980407585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4841449538468912832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83b78629a5b0c3b42bc641517b961437, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 3d1ba35bebaa9d748b00a666ff157869, type: 2}
 --- !u!65 &612297917670196469
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -111,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5178995, y: 3.4999998, z: 0.17500001}
   m_Center: {x: 0, y: 0.7499999, z: 0}
+--- !u!114 &1036861106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4841449538468912832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ddc5a2018b980a4eaab5536b564c2d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.1
+  bulletSpeed: 50
+  bulletPrefab: {fileID: 2126155049358688760, guid: 40c5be13002981943856ab94db372cf5, type: 3}
+  shootingPoint: {fileID: 0}
