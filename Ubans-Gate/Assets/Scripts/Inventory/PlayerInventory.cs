@@ -37,6 +37,9 @@ public class PlayerInventory : MonoBehaviour
             case InterfaceType.Equipment:
                 print(string.Concat("Removed ", _slot.ItemObject, " on ", _slot.parent.inventory.type, ", Allowed Items: ", string.Join(", ", _slot.AllowedItems)));
 
+                // SetActive(false) GameObject named "BeginnerStaffPrefab" in Player class
+                player.BeginnerStaffPrefab.SetActive(false);
+
                 for (int i = 0; i < _slot.item.buffs.Length; i++)
                 {
                     for (int j = 0; j < attributes.Length; j++)
@@ -67,7 +70,14 @@ public class PlayerInventory : MonoBehaviour
                 break;
             case InterfaceType.Equipment:
                 print(string.Concat("Placed ", _slot.ItemObject, " on ", _slot.parent.inventory.type, ", Allowed Items: ", string.Join(", ", _slot.AllowedItems)));
-                
+
+                // Check if _slot.ItemObject is "Beginner_Staff"
+                if (_slot.ItemObject.name == "Beginner_Staff")
+                {
+                    // SetActive(true) GameObject named "BeginnerStaffPrefab" in Player class
+                    player.BeginnerStaffPrefab.SetActive(true);
+                }
+
                 for (int i = 0; i < _slot.item.buffs.Length; i++)
                 {
                     for (int j = 0; j < attributes.Length; j++)

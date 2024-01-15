@@ -6,6 +6,9 @@ public class Player : MonoBehaviour
     [SerializeField] private UIManager UIManager;
     [SerializeField] private GameObject floatingTextPrefab;
 
+    // Weapon Lists
+    public GameObject BeginnerStaffPrefab;
+
     // Exp and Level
     public int Level { get; private set; } = 1;
     public int Exp { get; private set; } = 0;
